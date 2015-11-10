@@ -4,3 +4,5 @@
 /etc/network/interfaces
 /etc/hosts
 /etc/hostname
+/etc/cassandra
+/etc/elasticsearch
