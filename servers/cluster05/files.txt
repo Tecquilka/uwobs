@@ -4,3 +4,6 @@
 /etc/network/interfaces
 /etc/hosts
 /etc/hostname
+/etc/apt/apt.conf
+/etc/nginx/sites-available/default
+/etc/haproxy/haproxy.cfg
