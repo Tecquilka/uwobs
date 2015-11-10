@@ -1,5 +1,17 @@
 127.0.0.1	localhost
-172.17.1.89	data03
+172.17.1.86	kafka01
+172.17.1.87	kafka02
+172.17.1.88	kafka03
+172.17.1.89	data01
+172.17.1.90	data02
+172.17.1.91	data03
+172.17.1.92	cluster01
+172.17.1.93	cluster02
+172.17.1.94	cluster03
+172.17.1.95	cluster04
+172.17.1.96	cluster05
+172.17.1.83     dockerub
+172.16.255.19   spidvid
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
