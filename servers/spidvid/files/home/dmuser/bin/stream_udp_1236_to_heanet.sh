@@ -5,7 +5,3 @@ start=$(date +%s)
                        -vcodec libx264 \
                        -f flv \
                        rtmp://193.1.189.55:1935/marine/marine
-                       #rtmp://193.1.189.55:1935/marine
-                       #rtmp://193.1.189.55:1935/marine/spidvid
-                       #rtmp://marine:12eB7za7S79d@193.1.189.55:1935/marine
-                       # rtmp://193.1.189.55:1935/marine
