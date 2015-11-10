@@ -1,0 +1,16 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto em1
+#iface em1 inet dhcp
+iface em1 inet static
+    address 172.16.255.19
+    netmask 255.255.255.0
+    gateway 172.16.255.1
+    #up ip route add 172.16.0.0/16 via 172.17.1.254 || true
+
