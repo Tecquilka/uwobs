@@ -4,3 +4,6 @@
 /etc/network/interfaces
 /etc/hosts
 /etc/hostname
+/home/kafka/kafka/config
+/etc/zookeeper/conf/
+/etc/supervisor/conf.d
