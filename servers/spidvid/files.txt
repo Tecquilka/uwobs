@@ -4,3 +4,7 @@
 /etc/network/interfaces
 /etc/hosts
 /etc/hostname
+/etc/nginx/sites-available/default
+/etc/nginx/nginx.conf
+/etc/supervisor
+/home/dmuser/bin
