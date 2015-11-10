@@ -4,3 +4,6 @@
 /etc/network/interfaces
 /etc/hosts
 /etc/hostname
+/etc/supervisor/conf.d
+/home/gcouser/bin
+/home/gcouser/cron.tab

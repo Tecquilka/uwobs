@@ -1,0 +1,1 @@
+* * * * * rsync -avz --remove-source-files -e ssh --rsync-path bin/rsync icListen@172.16.255.253:Data /home/gcouser/hydrophone/
