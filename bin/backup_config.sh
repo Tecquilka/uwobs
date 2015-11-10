@@ -1,6 +1,6 @@
 #!/bin/sh
 SERVER=$(hostname -s)
-SERVERS_DIR=$(readlink -f $(dirname $0l)/../servers/)/$SERVER
+SERVERS_DIR=$(readlink -f $(dirname $0)/../servers/)/$SERVER
 mkdir -p $SERVERS_DIR/files
 FILES_LIST="$SERVERS_DIR/files.txt"
 if [ ! -f "$FILES_LIST" ]; then
