@@ -1,0 +1,8 @@
+/etc/hosts
+/etc/network/interfaces
+/etc/hostname
+/etc/apt/apt.conf
+/etc/supervisor/conf.d/apps-supervisor.conf
+/etc/nginx/sites-available/default
+/etc/haproxy/haproxy.cfg
+/home/opsuser/apps/kafka2cassandra
