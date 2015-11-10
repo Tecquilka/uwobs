@@ -1,0 +1,6 @@
+# list of files to be recorded
+# prefix with a - any file to be excluded
+# lines beginning with '#' will be ignored
+/etc/network/interfaces
+/etc/hosts
+/etc/hostname
