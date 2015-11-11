@@ -7,4 +7,5 @@
 /etc/apt/apt.conf
 /etc/nginx/sites-available/default
 /etc/nginx/sites-available/vector
+/etc/nginx/sites-available/monitoring-dashboard
 /etc/haproxy/haproxy.cfg
