@@ -6,4 +6,5 @@
 /etc/hostname
 /etc/apt/apt.conf
 /etc/nginx/sites-available/default
+/etc/nginx/sites-available/vector
 /etc/haproxy/haproxy.cfg
