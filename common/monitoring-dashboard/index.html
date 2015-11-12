@@ -11,11 +11,17 @@
     <script src="js/freeboard.thirdparty.min.js"></script>
     <script type="text/javascript">
         head.js("js/freeboard+plugins.min.js",
+                "lib/js/thirdparty/widget.ragIndicator.js",
                 // *** Load more plugins here ***
                 function(){
                     $(function()
                     { //DOM Ready
                         freeboard.initialize(true);
+                        $.getJSON("dashboard.json", function(data) {
+                                freeboard.loadDashboard(data, function() {
+                                //freeboard.setEditing(false);
+                            });
+                         });
 
                         var hashpattern = window.location.hash.match(/(&|#)source=([^&]+)/);
                         if (hashpattern !== null) {
