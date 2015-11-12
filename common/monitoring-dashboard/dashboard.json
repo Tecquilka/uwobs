@@ -4,6 +4,7 @@
 	"plugins": [],
 	"panes": [
 		{
+			"title": "Applications",
 			"width": 1,
 			"row": {
 				"3": 1
@@ -33,6 +34,59 @@
 						"amber_text": "LATE",
 						"red_text": "DOWN",
 						"indicator_type": "NORMAL"
+					}
+				}
+			]
+		},
+		{
+			"title": "Data Archives",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "fluorometers",
+						"device": "WL-ECO-FLNTU-3137",
+						"ext": ".txt"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "ctds",
+						"device": "I-OCEAN7-304-XXXX",
+						"ext": ".txt"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "adcps",
+						"device": "TRDI-WHB600Hz-1323",
+						"ext": ".pd0"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "acoustic_telemetry",
+						"device": "VMVR2C450117",
+						"ext": ".txt"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "hydrophones",
+						"device": "SBF1323",
+						"ext": "00.txt"
 					}
 				}
 			]

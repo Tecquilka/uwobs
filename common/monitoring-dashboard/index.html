@@ -12,6 +12,7 @@
     <script type="text/javascript">
         head.js("js/freeboard+plugins.min.js",
                 "lib/js/thirdparty/widget.ragIndicator.js",
+                "lib/js/thirdparty/widget.miDataArchive.js",
                 // *** Load more plugins here ***
                 function(){
                     $(function()
@@ -19,7 +20,7 @@
                         freeboard.initialize(true);
                         $.getJSON("dashboard.json", function(data) {
                                 freeboard.loadDashboard(data, function() {
-                                //freeboard.setEditing(false);
+                                freeboard.setEditing(false);
                             });
                          });
 
