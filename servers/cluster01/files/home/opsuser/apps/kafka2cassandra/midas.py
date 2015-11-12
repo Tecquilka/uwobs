@@ -1,6 +1,7 @@
 import datetime
 import os
 import sys
+import json
 from threading import Thread
 from time import time as now, sleep
 from BaseHTTPServer import HTTPServer
@@ -12,18 +13,22 @@ class WebServer(Thread):
         super(WebServer,self).__init__()
         self.status = "No messages yet"
         self.http_port = http_port
+        self.last_update = 0
 
     def update(self,status):
         self.status = status
+        self.last_update = now()
 
     def run(self):
         ws = self
         class ShowLineRequestHandler (BaseHTTPRequestHandler) :
             def do_GET(self) :
+                result = {"message": ws.status, "seconds_since_updated": now() - ws.last_update}
                 self.send_response(200)
                 self.send_header("Content-type:", "text/plain")
                 self.wfile.write("\n")
-                self.wfile.write(ws.status)
+                #self.wfile.write(ws.status)
+                self.wfile.write(json.dumps(result))
                 self.wfile.write("\n")
 
         server = HTTPServer(("", self.http_port), ShowLineRequestHandler)
