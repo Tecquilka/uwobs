@@ -65,7 +65,10 @@
 			
 			var mipcpValue = _.isUndefined(stateObject.value) ? -1 : stateObject.value;			
 			indicatorElement.addClass(stateArray[stateObject.value]);
-			stateElement.html(stateObject.status);
+                        var link = '<a target="vector_'+currentSettings.hostname
+                                  +'" href="http://vector.sysadmin.dm.marine.ie/#/?host='+currentSettings.hostname
+                                  +'.pcp.dm.marine.ie&hostspec=localhost">'+stateObject.status+'</a>';
+			stateElement.html(link);
 		
         }
 
