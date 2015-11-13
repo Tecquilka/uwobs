@@ -32,19 +32,20 @@
                         var hour = ("0"+d.getUTCHours()).slice(-2);
                         var minute = ("0"+d.getUTCMinutes()).slice(-2);
                         var filename = device+"_"+year+month+day+"_"+hour+minute+ext;
-                        var url = base+dtype+"/"+device+"/"+year+"/"+month+"/"+day+"/"+filename;
+                        var folder_url = base+dtype+"/"+device+"/"+year+"/"+month+"/"+day+"/";
+                        var url = folder_url+filename;
                         stateObject.value = 1;
                       $.ajax({
                            url : url,
                            type : 'HEAD',
                           dataType: 'text/plain',
                            success : function(){
-                             stateObject["status"] = "OK";
+                             stateObject["status"] = "<a target='"+device+"' href='"+folder_url+"'>OK</a>";
                              stateObject["fails"] = 0;
                              stateObject.value=0;
                           }
                       }).fail(function(){
-                           stateObject["status"] = "PROBLEM";
+                           stateObject["status"] = "<a target='"+device+"' href='"+folder_url+"'>PROBLEM</a>";
                            stateObject["fails"] += 1;
                            stateObject.value= stateObject.fails>=5?2:1;
                          }
