@@ -47,6 +47,7 @@
                              _updateState()
                           }
                       }).fail(function(){
+                           delete stateObject["context"];
                            stateObject["status"] = "PROBLEM";
                            stateObject["fails"] += 1;
                            stateObject.value= stateObject.fails>=5?2:1;
