@@ -15,17 +15,20 @@ parser.add_argument('--http-port', type=int, default=8082, help='HTTP web server
 parser.add_argument('--verbose', type=bool, default=False, help='Whether to write to the console')
 args = parser.parse_args()
 
+lat = 53.227333
+lon = -9.266286
+depth = 20.0
 cluster = Cluster(['data01','data02','data03'])
 session = cluster.connect('das')
 prepared_insert = SimpleStatement("""
-    INSERT INTO ctd (instrument_id, time, press, temp, cond, sal, soundv, ttime)
-    VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+    INSERT INTO ctd (instrument_id, time, lat, lon, depth, press, temp, cond, sal, soundv, ttime)
+    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
                                    """)
 sys.stderr.write("connected to cassandra\n")
 client = KafkaClient(hosts="kafka01:9092,kafka02:9092,kafka03:9092")
 topic = client.topics['spiddal-ctd']
 consumer = topic.get_simple_consumer(auto_commit_enable=True,
-                                     consumer_group="ctd2cassandra", 
+                                     consumer_group="ctd2cassandra_v2", 
                                      auto_offset_reset=OffsetType.EARLIEST,
                                      reset_offset_on_start=False)
 
@@ -51,7 +54,7 @@ for message in consumer:
 
             (Press,Temp,Cond,Sal,SoundV,Time) = values
             session.execute(
-                prepared_insert,(source,timestamp,float(Press),float(Temp),float(Cond),float(Sal),float(SoundV),Time)
+                prepared_insert,(source,timestamp,lat,lon,depth,float(Press),float(Temp),float(Cond),float(Sal),float(SoundV),Time)
             )
             killer.ping()
             webserver.update(message.value)
