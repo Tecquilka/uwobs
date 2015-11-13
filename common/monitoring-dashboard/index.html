@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>freeboard</title>
+    <title>uwobs dashboard</title>
 	<meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -11,11 +11,19 @@
     <script src="js/freeboard.thirdparty.min.js"></script>
     <script type="text/javascript">
         head.js("js/freeboard+plugins.min.js",
+                "lib/js/thirdparty/widget.ragIndicator.js",
+                "lib/js/thirdparty/widget.miDataArchive.js",
+                "lib/js/thirdparty/widget.miPcpPing.js",
                 // *** Load more plugins here ***
                 function(){
                     $(function()
                     { //DOM Ready
                         freeboard.initialize(true);
+                        $.getJSON("dashboard.json", function(data) {
+                                freeboard.loadDashboard(data, function() {
+                                freeboard.setEditing(false);
+                            });
+                         });
 
                         var hashpattern = window.location.hash.match(/(&|#)source=([^&]+)/);
                         if (hashpattern !== null) {

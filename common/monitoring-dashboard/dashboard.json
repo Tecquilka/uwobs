@@ -1,0 +1,255 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Data Archives",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "fluorometers",
+						"device": "WL-ECO-FLNTU-3137",
+						"ext": ".txt"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "ctds",
+						"device": "I-OCEAN7-304-XXXX",
+						"ext": ".txt"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "adcps",
+						"device": "TRDI-WHB600Hz-1323",
+						"ext": ".pd0"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "acoustic_telemetry",
+						"device": "VMVR2C450117",
+						"ext": ".txt"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "hydrophones",
+						"device": "SBF1323",
+						"ext": "00.txt"
+					}
+				}
+			]
+		},
+		{
+			"title": "Cassandra Servers",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "data01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "data02"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "data03"
+					}
+				}
+			]
+		},
+		{
+			"title": "Primary Servers",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "spidvid"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "gconode01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "dockerub"
+					}
+				}
+			]
+		},
+		{
+			"title": "Applications",
+			"width": 1,
+			"row": {
+				"3": 9
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "ragIndicator",
+					"settings": {
+						"title": "ctd2cassandra",
+						"value": "var updated = datasources[\"ctd2cassandra\"][\"seconds_since_updated\"];\nreturn updated < 5? 0: updated<30? 1: 2;",
+						"green_text": "OK",
+						"amber_text": "LATE",
+						"red_text": "DOWN",
+						"indicator_type": "NORMAL"
+					}
+				},
+				{
+					"type": "ragIndicator",
+					"settings": {
+						"title": "fluorometer2cassandra",
+						"value": "var updated = datasources[\"fluorometer2cassandra\"][\"seconds_since_updated\"];\nreturn updated < 5? 0: updated < 30? 1 : 2;",
+						"green_text": "OK",
+						"amber_text": "LATE",
+						"red_text": "DOWN",
+						"indicator_type": "NORMAL"
+					}
+				}
+			]
+		},
+		{
+			"title": "Kakfa Servers",
+			"width": 1,
+			"row": {
+				"3": 13
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka02"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka03"
+					}
+				}
+			]
+		},
+		{
+			"title": "Processing Servers",
+			"width": 1,
+			"row": {
+				"3": 9
+			},
+			"col": {
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster02"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster03"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster04"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster05"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "ctd2cassandra",
+			"type": "JSON",
+			"settings": {
+				"url": "http://ctd2cassandra.dm.marine.ie",
+				"use_thingproxy": false,
+				"refresh": 30,
+				"method": "GET",
+				"name": "ctd2cassandra"
+			}
+		},
+		{
+			"name": "fluorometer2cassandra",
+			"type": "JSON",
+			"settings": {
+				"url": "http://fluorometer2cassandra.dm.marine.ie/",
+				"use_thingproxy": false,
+				"refresh": 30,
+				"method": "GET"
+			}
+		}
+	],
+	"columns": 3
+}
