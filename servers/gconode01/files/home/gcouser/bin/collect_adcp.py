@@ -21,7 +21,7 @@ first_time = True
 
 def next_filename():
     now = datetime.utcnow()
-    return '{0}/{1}_{2}.pd0'.format(folder,device,now.strftime("%Y%m%d_%H%M%S"))
+    return '{0}/{1}_{2}.pd0'.format(folder,device,now.strftime("%Y%m%d_%H%M"))
 
 
 def write_to_file(b):
