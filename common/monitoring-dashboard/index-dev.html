@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Dev Version links to full versions (non-minified) of javascript and css files -->
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,43 +7,33 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="viewport" content = "width = device-width, initial-scale = 1, user-scalable = no" />
-    <link href="lib/css/thirdparty/jquery.gridster.min.css" rel="stylesheet" />
-	<link href="lib/css/thirdparty/codemirror.css" rel="stylesheet" />
-	<link href="lib/css/thirdparty/codemirror-ambiance.css" rel="stylesheet" />
-    <link href="lib/css/freeboard/styles.css" rel="stylesheet" />
-    <script src="lib/js/thirdparty/head.js"></script>
+    <link href="css/freeboard.min.css" rel="stylesheet" />
+    <script src="js/freeboard.thirdparty.min.js"></script>
     <script type="text/javascript">
-        head.js("lib/js/thirdparty/knockout.js",
-                "lib/js/thirdparty/jquery.js",
-                "lib/js/thirdparty/jquery-ui.js",
-                "lib/js/thirdparty/underscore.js",
-                "lib/js/thirdparty/jquery.gridster.js",
-                "lib/js/thirdparty/jquery.caret.js",
-				"lib/js/thirdparty/codemirror.js",
-				"lib/js/thirdparty/jquery.xdomainrequest.js",
-
-                "lib/js/freeboard/FreeboardModel.js",
-                "lib/js/freeboard/DatasourceModel.js",
-                "lib/js/freeboard/PaneModel.js",
-                "lib/js/freeboard/WidgetModel.js",
-                "lib/js/freeboard/FreeboardUI.js",
-                "lib/js/freeboard/DialogBox.js",
-                "lib/js/freeboard/PluginEditor.js",
-                "lib/js/freeboard/ValueEditor.js",
-                "lib/js/freeboard/JSEditor.js",
-                "lib/js/freeboard/DeveloperConsole.js",
-                "lib/js/freeboard/freeboard.js",
-
-                "plugins/freeboard/freeboard.datasources.js",
-                "plugins/freeboard/freeboard.widgets.js",
+        head.js("js/freeboard+plugins.min.js",
                 "lib/js/thirdparty/widget.ragIndicator.js",
-
+                "lib/js/thirdparty/widget.miDataArchive.js",
+                "lib/js/thirdparty/widget.miPcpPing.js",
                 // *** Load more plugins here ***
                 function(){
                     $(function()
                     { //DOM Ready
-						freeboard.setAssetRoot("/freeboard-ui/");
                         freeboard.initialize(true);
+                        $.getJSON("dashboard.json", function(data) {
+                                freeboard.loadDashboard(data, function() {
+                                freeboard.setEditing(false);
+                            });
+                         });
+
+                        var hashpattern = window.location.hash.match(/(&|#)source=([^&]+)/);
+                        if (hashpattern !== null) {
+                            $.getJSON(hashpattern[2], function(data) {
+                                freeboard.loadDashboard(data, function() {
+                                    freeboard.setEditing(false);
+                                });
+                            });
+                        }
+
                     });
                 });
     </script>
@@ -118,8 +107,7 @@
 		</ul>
 	</div>
     <div id="toggle-header" data-bind="click: toggleEditing">
-        <i id="toggle-header-icon" class="icon-wrench icon-white"></i>
-	</div>
+        <i id="toggle-header-icon" class="icon-wrench icon-white"></i></div>
 </header>
 
 <div style="display:hidden">
