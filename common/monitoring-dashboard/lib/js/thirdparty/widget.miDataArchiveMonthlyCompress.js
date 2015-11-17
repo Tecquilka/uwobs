@@ -91,7 +91,8 @@
            if(refreshTimer){
               clearInterval(refreshTimer);
            }
-           refreshTimer = setInterval(function(){updateState();},60000);
+           // checks once each hour
+           refreshTimer = setInterval(function(){updateState();},60000*60);
         };
         createRefreshTimer();
     };
