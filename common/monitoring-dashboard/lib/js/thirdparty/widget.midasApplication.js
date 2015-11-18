@@ -22,9 +22,9 @@
         
 		function updateState() {         
                         var url = currentSettings.url;
-                        var warning_timeout = parseInt(current_settings.warning_timeout);
+                        var warning_timeout = parseInt(currentSettings.warning_timeout);
                         warning_timeout = warning_timeout ? warning_timeout : 30;
-                        var error_timeout = parseInt(current_settings.error_timeout);
+                        var error_timeout = parseInt(currentSettings.error_timeout);
                         error_timeout = error_timeout ? error_timeout : 30;
                       $.ajax({
                            url : url,
