@@ -25,6 +25,7 @@ class WebServer(Thread):
             def do_GET(self) :
                 result = {"message": ws.status, "seconds_since_updated": now() - ws.last_update}
                 self.send_response(200)
+                self.send_header("Access-Control-Allow-Origin", "*")
                 self.send_header("Content-type:", "text/plain")
                 self.wfile.write("\n")
                 #self.wfile.write(ws.status)
