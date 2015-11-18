@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##################################################################
 #
 # Writes data from a socket to a file, rotating the file each minute
@@ -14,13 +14,23 @@ PORT=950
 DATA_DIR=$HOME/$TYPE
 SERVER=172.16.255.5
 ARCHIVER=$(dirname $0)/archive_file.sh
-TIMESTAMPER=$(dirname $0)/add_timestamp_and_id.py
+HTTP_PORT=8082
+KAFKA_SERVER=localhost
+KAFKA_TOPIC=spiddal-ctd
+PYTHON=/home/gcouser/virtualenv/serial2kafka/bin/python
+CATSERIAL=/home/gcouser/apps/catserial/catserial.py
 
 mkdir -p $DATA_DIR || exit 1
 mkdir -p $DATA_DIR/Data || exit 1
 
-nc -w 120 $SERVER $PORT |stdbuf -o0 sed -e 's/\r//' | stdbuf -o0 grep -E \[0-9\] | stdbuf -oL $TIMESTAMPER "$DEVICE" |rotatelogs -p $ARCHIVER "$DATA_DIR/${DEVICE}_%Y%m%d_%H%M.txt" 60
+$PYTHON $CATSERIAL --device "socket://$SERVER:$PORT" --source "$DEVICE" --http-port $HTTP_PORT \
+                   | tee >( kafkacat -P -b "$KAFKA_SERVER" -t "$KAFKA_TOPIC" -p 0 ) \
+                   | rotatelogs -p $ARCHIVER "$DATA_DIR/${DEVICE}_%Y%m%d_%H%M.txt" 60
 
 status=$?
-sleep 10
+while [ $SECONDS -lt 31 ]; do
+    echo -n . >&2
+    sleep 1
+done
+echo "done" $(date) >&2
 exit $status

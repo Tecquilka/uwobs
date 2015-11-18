@@ -8,3 +8,4 @@
 /etc/supervisor/conf.d
 /home/gcouser/bin
 /home/gcouser/cron.tab
+/home/gcouser/apps/catserial

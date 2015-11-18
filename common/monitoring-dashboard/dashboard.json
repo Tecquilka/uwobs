@@ -4,7 +4,7 @@
 	"plugins": [],
 	"panes": [
 		{
-			"title": "Data Archives",
+			"title": "Current Data Archives",
 			"width": 1,
 			"row": {
 				"3": 1
@@ -91,7 +91,7 @@
 			"title": "Primary Servers",
 			"width": 1,
 			"row": {
-				"3": 1
+				"3": 13
 			},
 			"col": {
 				"3": 1
@@ -122,7 +122,7 @@
 			"title": "Applications",
 			"width": 1,
 			"row": {
-				"3": 9
+				"3": 21
 			},
 			"col": {
 				"3": 1
@@ -134,9 +134,9 @@
 					"settings": {
 						"title": "ctd2cassandra",
 						"value": "var updated = datasources[\"ctd2cassandra\"][\"seconds_since_updated\"];\nreturn updated < 5? 0: updated<30? 1: 2;",
-						"green_text": "OK",
-						"amber_text": "LATE",
-						"red_text": "DOWN",
+						"green_text": "<a target=\"ctd2cassandra\" href=\"http://ctd2cassandra.dm.marine.ie\">OK</a>",
+						"amber_text": "<a target=\"ctd2cassandra\" href=\"http://ctd2cassandra.dm.marine.ie\">LATE</a>",
+						"red_text": "<a target=\"ctd2cassandra\" href=\"http://ctd2cassandra.dm.marine.ie\">DOWN</a>",
 						"indicator_type": "NORMAL"
 					}
 				},
@@ -145,41 +145,10 @@
 					"settings": {
 						"title": "fluorometer2cassandra",
 						"value": "var updated = datasources[\"fluorometer2cassandra\"][\"seconds_since_updated\"];\nreturn updated < 5? 0: updated < 30? 1 : 2;",
-						"green_text": "OK",
-						"amber_text": "LATE",
-						"red_text": "DOWN",
+						"green_text": "<a target=\"fluorometer2cassandra\" href=\"http://fluorometer2cassandra.dm.marine.ie\">OK</a>",
+						"amber_text": "<a target=\"fluorometer2cassandra\" href=\"http://fluorometer2cassandra.dm.marine.ie\">LATE</a>",
+						"red_text": "<a target=\"fluorometer2cassandra\" href=\"http://fluorometer2cassandra.dm.marine.ie\">DOWN</a>",
 						"indicator_type": "NORMAL"
-					}
-				}
-			]
-		},
-		{
-			"title": "Kakfa Servers",
-			"width": 1,
-			"row": {
-				"3": 13
-			},
-			"col": {
-				"3": 2
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka01"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka02"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka03"
 					}
 				}
 			]
@@ -223,6 +192,85 @@
 					"type": "mipcpIndicator",
 					"settings": {
 						"hostname": "cluster05"
+					}
+				}
+			]
+		},
+		{
+			"title": "Kakfa Servers",
+			"width": 1,
+			"row": {
+				"3": 13
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka02"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka03"
+					}
+				}
+			]
+		},
+		{
+			"title": "Monthly Compress Archives",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "midasmcIndicator",
+					"settings": {
+						"device_type": "fluorometers",
+						"device": "WL-ECO-FLNTU-3137"
+					}
+				},
+				{
+					"type": "midasmcIndicator",
+					"settings": {
+						"device_type": "ctds",
+						"device": "I-OCEAN7-304-XXXX"
+					}
+				},
+				{
+					"type": "midasmcIndicator",
+					"settings": {
+						"device_type": "adcps",
+						"device": "TRDI-WHB600Hz-1323"
+					}
+				},
+				{
+					"type": "midasmcIndicator",
+					"settings": {
+						"device_type": "acoustic_telemetry",
+						"device": "VMVR2C450117"
+					}
+				},
+				{
+					"type": "midasmcIndicator",
+					"settings": {
+						"device_type": "hydrophones",
+						"device": "SBF1323"
 					}
 				}
 			]
