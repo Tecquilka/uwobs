@@ -98,7 +98,7 @@
            if(refreshTimer){
               clearInterval(refreshTimer);
            }
-           refreshTimer = setInterval(function(){updateState();},60000);
+           refreshTimer = setInterval(function(){updateState();},15000);
         };
         createRefreshTimer();
     };
