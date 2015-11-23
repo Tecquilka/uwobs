@@ -19,7 +19,7 @@ Instruments are connected to the shore station in Spiddal where we have
 
 ## Servers in Spiddal
   * [spidvid](servers/spidvid/) a physical server with video card
-  * [gconode01](servers/gconode01] ubuntu vm running data collectors
+  * [gconode01](servers/gconode01/] ubuntu vm running data collectors
 
 ## Servers in Oranmore:
   * [dockerub](servers/dockerub/) nginx server
