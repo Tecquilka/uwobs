@@ -1,6 +1,6 @@
 # cluster01
 
-[previous](../../) [next](../cluster02/)
+previous [next](../cluster02/)
 
 This is the first of five nodes for cluster applications
 

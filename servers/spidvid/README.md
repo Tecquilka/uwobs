@@ -1,6 +1,6 @@
 # spidvid
 
-[previous](../kafka03/) [next](../../)
+[previous](../kafka03/) next
 
 This is a physical server with video card connected to the underwater camera 
 
