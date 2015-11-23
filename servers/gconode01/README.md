@@ -1,5 +1,7 @@
 # gconode01
 
+[previous](../dockerub/) [next](../kafka01/)
+
 This is the main data collection service at spiddal
 
 address 172.16.255.226

@@ -1,5 +1,7 @@
 # dockerub
 
+[previous](../data03/) [next](../gconode01/)
+
 This is the third of three data servers
 
 address 172.17.1.83
