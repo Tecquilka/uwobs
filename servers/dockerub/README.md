@@ -1,0 +1,11 @@
+# dockerub
+
+This is the third of three data servers
+
+address 172.17.1.83
+
+## Services
+
+  * Nginx (main website)
+  * data rsync jobs run by cron
+

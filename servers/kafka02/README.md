@@ -1,0 +1,9 @@
+# kafka02
+
+This is the second of three kafka servers
+
+address 172.17.1.87
+
+## Services
+
+  * Kafka
