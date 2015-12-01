@@ -9,4 +9,14 @@ address 172.17.1.94
 ## Services
 
   * HAProxy
+  * geonetwork (evaluation)
+
+## Docker
+
+geonetwork running for evaluation by Trevor/Adam must be restarted manually after a reboot using the following commands.
+
+  docker start geonetwork_postgis
+  docker start geonetwork
+
+The service should become available at: [geonetwork.dm.marine.ie](http://geonetwork.dm.marine.ie)
 

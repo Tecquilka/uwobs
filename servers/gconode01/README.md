@@ -1,6 +1,6 @@
 # gconode01
 
-[previous](../dockerub/) [next](../kafka01/)
+[previous](../gcoinstsrv02/) [next](../kafka01/)
 
 This is the main data collection service at spiddal
 

@@ -10,4 +10,5 @@ address 172.17.1.93
 
   * HAProxy
   * [dashboard.sysadmin.dm.marine.ie](dashboard.sysadmin.dm.marine.ie)
+  * [vector.sysadmin.dm.marine.ie](vector.sysadmin.dm.marine.ie)
 

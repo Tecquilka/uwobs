@@ -1,6 +1,6 @@
 # dockerub
 
-[previous](../data03/) [next](../gconode01/)
+[previous](../data03/) [next](../gcoinstsrv01/)
 
 This is the third of three data servers
 

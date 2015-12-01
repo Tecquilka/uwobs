@@ -9,3 +9,15 @@ address 172.17.1.95
 ## Services
 
   * HAProxy
+
+## Docker
+
+### Virtuoso
+
+Virtuoso is running for evaluation by Adam.
+
+Docker was started using the following command, and should restart automatically after reboot.
+
+  docker run --name virtuoso -p 8890:8890 -p 1111:1111 -e SPARQL_UPDATE=true -e DEFAULT_GRAPH=http://virtuoso.dm.marine.ie/DAV -v /opt/virtuoso/db:/var/lib/virtuoso/db -d --restart=always tenforce/virtuoso
+
+
