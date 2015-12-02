@@ -6,6 +6,8 @@ This is the second of five nodes for cluster applications
 
 address 172.17.1.93
 
+user opsuser
+
 ## Services
 
   * HAProxy

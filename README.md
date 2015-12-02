@@ -95,3 +95,21 @@ Start the vm's in the following order, then use the pnc client to restart the de
   * [data02](servers/data02/)
   * [data03](servers/data03/)
 
+### Post Startup Tasks
+
+  * On [gcoinstsrv01](servers/gcoinstsrv01/) stop the ctd  data feed, update
+    the timestamp, then restart data feed. (TODO: more detail here)
+  * On [gcoinstsrv01](servers/gcoinstsrv01/) in chrome, reset the hydrophone
+    timestamp. (TODO: more detail here)
+  * Adjust the video camera (see below)
+
+# Adjusting the Video Camera
+
+  * Remote desktop to Asus laptop 172.16.255.16
+  * From there remote desktop to the NMS 172.16.255.15
+  * Start the Kongsberg software using the “Kconbsberg Camera Control” shortcut on Desktop
+  * Start VLC media player using “VLC Spiddal Video” shortcut on Desktop. (Note it takes a couple of seconds to show the video)
+  * The Kongsberg software can now be used to control the video, which will show adjust with about a 2 second delay.  At the moment we are using an upward looking position currently stored at “Preset 7”.
+  * If the picture remains black or very dark (possibly due to biofouling), it may be necessary to change the exposure from automatic to shutter, and slow the shutter speed until picture becomes visible.
+  * If all else fails set auto focus and try various presets.
+
