@@ -92,51 +92,52 @@
 			]
 		},
 		{
-			"title": "Monthly Compress Archives",
+			"title": "spiddal data collectors",
 			"width": 1,
 			"row": {
-				"3": 11,
-				"4": 13
+				"3": 1,
+				"4": 1
 			},
 			"col": {
 				"3": 1,
-				"4": 2
+				"4": 1
 			},
 			"col_width": 1,
 			"widgets": [
 				{
-					"type": "midasmcIndicator",
+					"type": "midasApplicationIndicator",
 					"settings": {
-						"device_type": "fluorometers",
-						"device": "WL-ECO-FLNTU-3137"
+						"application_name": "ADCP",
+						"url": "http://adcp.gconode01.dm.marine.ie/",
+						"warning_timeout": "60",
+						"error_timeout": "300"
 					}
 				},
 				{
-					"type": "midasmcIndicator",
+					"type": "midasApplicationIndicator",
 					"settings": {
-						"device_type": "ctds",
-						"device": "I-OCEAN7-304-XXXX"
+						"application_name": "Fluorometer",
+						"url": "http://fluorometer.gconode01.dm.marine.ie/",
+						"warning_timeout": "60",
+						"error_timeout": "300"
 					}
 				},
 				{
-					"type": "midasmcIndicator",
+					"type": "midasApplicationIndicator",
 					"settings": {
-						"device_type": "adcps",
-						"device": "TRDI-WHB600Hz-1323"
+						"application_name": "CTD",
+						"url": "http://ctd.gconode01.dm.marine.ie/",
+						"warning_timeout": "60",
+						"error_timeout": "300"
 					}
 				},
 				{
-					"type": "midasmcIndicator",
+					"type": "midasApplicationIndicator",
 					"settings": {
-						"device_type": "acoustic_telemetry",
-						"device": "VMVR2C450117"
-					}
-				},
-				{
-					"type": "midasmcIndicator",
-					"settings": {
-						"device_type": "hydrophones",
-						"device": "SBF1323"
+						"application_name": "VEMCO",
+						"url": "http://vemco.gconode01.dm.marine.ie/",
+						"warning_timeout": "60",
+						"error_timeout": "300"
 					}
 				}
 			]
@@ -187,34 +188,51 @@
 			]
 		},
 		{
-			"title": "Primary Servers",
+			"title": "Monthly Compress Archives",
 			"width": 1,
 			"row": {
-				"3": 23,
-				"4": 9
+				"3": 11,
+				"4": 13
 			},
 			"col": {
 				"3": 1,
-				"4": 3
+				"4": 2
 			},
 			"col_width": 1,
 			"widgets": [
 				{
-					"type": "mipcpIndicator",
+					"type": "midasmcIndicator",
 					"settings": {
-						"hostname": "spidvid"
+						"device_type": "fluorometers",
+						"device": "WL-ECO-FLNTU-3137"
 					}
 				},
 				{
-					"type": "mipcpIndicator",
+					"type": "midasmcIndicator",
 					"settings": {
-						"hostname": "gconode01"
+						"device_type": "ctds",
+						"device": "I-OCEAN7-304-XXXX"
 					}
 				},
 				{
-					"type": "mipcpIndicator",
+					"type": "midasmcIndicator",
 					"settings": {
-						"hostname": "dockerub"
+						"device_type": "adcps",
+						"device": "TRDI-WHB600Hz-1323"
+					}
+				},
+				{
+					"type": "midasmcIndicator",
+					"settings": {
+						"device_type": "acoustic_telemetry",
+						"device": "VMVR2C450117"
+					}
+				},
+				{
+					"type": "midasmcIndicator",
+					"settings": {
+						"device_type": "hydrophones",
+						"device": "SBF1323"
 					}
 				}
 			]
@@ -253,6 +271,39 @@
 			]
 		},
 		{
+			"title": "Primary Servers",
+			"width": 1,
+			"row": {
+				"3": 23,
+				"4": 9
+			},
+			"col": {
+				"3": 1,
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "spidvid"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "gconode01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "dockerub"
+					}
+				}
+			]
+		},
+		{
 			"title": "Applications",
 			"width": 1,
 			"row": {
@@ -266,47 +317,10 @@
 			"col_width": 1,
 			"widgets": [
 				{
-					"type": "ragIndicator",
-					"settings": {
-						"title": "ctd2cassandra",
-						"value": "var updated = datasources[\"ctd2cassandra\"][\"seconds_since_updated\"];\nreturn updated < 5? 0: updated<30? 1: 2;",
-						"green_text": "<a target=\"ctd2cassandra\" href=\"http://ctd2cassandra.dm.marine.ie\">OK</a>",
-						"amber_text": "<a target=\"ctd2cassandra\" href=\"http://ctd2cassandra.dm.marine.ie\">LATE</a>",
-						"red_text": "<a target=\"ctd2cassandra\" href=\"http://ctd2cassandra.dm.marine.ie\">DOWN</a>",
-						"indicator_type": "NORMAL"
-					}
-				},
-				{
-					"type": "ragIndicator",
-					"settings": {
-						"title": "fluorometer2cassandra",
-						"value": "var updated = datasources[\"fluorometer2cassandra\"][\"seconds_since_updated\"];\nreturn updated < 5? 0: updated < 30? 1 : 2;",
-						"green_text": "<a target=\"fluorometer2cassandra\" href=\"http://fluorometer2cassandra.dm.marine.ie\">OK</a>",
-						"amber_text": "<a target=\"fluorometer2cassandra\" href=\"http://fluorometer2cassandra.dm.marine.ie\">LATE</a>",
-						"red_text": "<a target=\"fluorometer2cassandra\" href=\"http://fluorometer2cassandra.dm.marine.ie\">DOWN</a>",
-						"indicator_type": "NORMAL"
-					}
-				}
-			]
-		},
-		{
-			"title": "spiddal data collectors",
-			"width": 1,
-			"row": {
-				"3": 1,
-				"4": 1
-			},
-			"col": {
-				"3": 1,
-				"4": 1
-			},
-			"col_width": 1,
-			"widgets": [
-				{
 					"type": "midasApplicationIndicator",
 					"settings": {
-						"application_name": "ADCP",
-						"url": "http://adcp.gconode01.dm.marine.ie/",
+						"application_name": "ctd2cassandra",
+						"url": "http://ctd2cassandra.dm.marine.ie",
 						"warning_timeout": "60",
 						"error_timeout": "300"
 					}
@@ -314,26 +328,8 @@
 				{
 					"type": "midasApplicationIndicator",
 					"settings": {
-						"application_name": "Fluorometer",
-						"url": "http://fluorometer.gconode01.dm.marine.ie/",
-						"warning_timeout": "60",
-						"error_timeout": "300"
-					}
-				},
-				{
-					"type": "midasApplicationIndicator",
-					"settings": {
-						"application_name": "CTD",
-						"url": "http://ctd.gconode01.dm.marine.ie/",
-						"warning_timeout": "60",
-						"error_timeout": "300"
-					}
-				},
-				{
-					"type": "midasApplicationIndicator",
-					"settings": {
-						"application_name": "VEMCO",
-						"url": "http://vemco.gconode01.dm.marine.ie/",
+						"application_name": "fluorometer2cassandra",
+						"url": "http://fluorometer2cassandra.dm.marine.ie",
 						"warning_timeout": "60",
 						"error_timeout": "300"
 					}
