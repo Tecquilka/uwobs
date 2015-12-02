@@ -22,7 +22,7 @@
         
 		function updateState() {        
                       $.ajax({
-                          url : current_settings.url,
+                          url : currentSettings.url,
                           dataType: 'text',
                            success : function(data){
                              if( data == stateObject.data){
@@ -32,6 +32,7 @@
                                stateObject["status"] = "OK";
                                stateObject.value = 0;
                              }
+                             stateObject["data"] = data;
                              _updateState()
                           }
                       }).fail(function(){

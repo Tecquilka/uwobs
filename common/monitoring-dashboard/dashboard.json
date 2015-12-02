@@ -96,7 +96,7 @@
 			"width": 1,
 			"row": {
 				"3": 1,
-				"4": 1
+				"4": 5
 			},
 			"col": {
 				"3": 1,
@@ -308,7 +308,7 @@
 			"width": 1,
 			"row": {
 				"3": 31,
-				"4": 11
+				"4": 15
 			},
 			"col": {
 				"3": 1,
@@ -335,30 +335,29 @@
 					}
 				}
 			]
-		}
-	],
-	"datasources": [
-		{
-			"name": "ctd2cassandra",
-			"type": "JSON",
-			"settings": {
-				"url": "http://ctd2cassandra.dm.marine.ie",
-				"use_thingproxy": false,
-				"refresh": 30,
-				"method": "GET",
-				"name": "ctd2cassandra"
-			}
 		},
 		{
-			"name": "fluorometer2cassandra",
-			"type": "JSON",
-			"settings": {
-				"url": "http://fluorometer2cassandra.dm.marine.ie/",
-				"use_thingproxy": false,
-				"refresh": 30,
-				"method": "GET"
-			}
+			"title": "spiddal.marine.ie website",
+			"width": 1,
+			"row": {
+				"4": 1
+			},
+			"col": {
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "micchIndicator",
+					"settings": {
+						"title": "Streaming Video",
+						"url": "http://spiddal.marine.ie/spidvid/hls/spiddal1.m3u8",
+						"link": "http://spiddal.marine.ie"
+					}
+				}
+			]
 		}
 	],
+	"datasources": [],
 	"columns": 4
 }
