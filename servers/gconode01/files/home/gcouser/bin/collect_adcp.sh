@@ -8,6 +8,11 @@
 # Script is executed by supervisor,
 # see /etc/supervisor/conf.d/ctd.conf
 ################################################################## 
+while [ $(cat /proc/uptime | awk '{print $1}' | sed 's/\..*$//') -lt 120 ]
+do 
+   echo waiting for 2 minutes of uptime... >&2 
+   sleep 10
+done
 
 SOURCE=TRDI-WHB600Hz-1323
 PORT=952

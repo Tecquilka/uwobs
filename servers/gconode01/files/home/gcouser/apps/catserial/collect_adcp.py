@@ -4,7 +4,7 @@ import socket
 import fcntl, os
 import errno
 from time import sleep
-from datetime import datetime
+import datetime
 import argparse
 from midas import WebServer, KillerMonitor, is_number
 from time import time as now, sleep
@@ -41,9 +41,17 @@ f = None
 filename = None
 first_time = True
 
+def file_path_for_timestamp(timestamp):
+    return '{0}/{1}_{2}.pd0'.format(folder,device,timestamp.strftime("%Y%m%d_%H%M"))
 def next_filename():
-    now = datetime.utcnow()
-    return '{0}/{1}_{2}.pd0'.format(folder,device,now.strftime("%Y%m%d_%H%M"))
+    now = datetime.datetime.utcnow()
+    delta = datetime.timedelta(seconds=30)
+    path = file_path_for_timestamp(now - delta)
+    if first_time or os.path.isfile(path):
+       path = file_path_for_timestamp(now)
+       if os.path.isfile(path):
+          path = file_path_for_timestamp(now + delta)
+    return path
 
 
 def write_to_file(b):
