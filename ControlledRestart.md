@@ -7,10 +7,14 @@ may be required to restart those. That scenario is not considered here.
 ## Controlled Shutdown
 
 ### 1. Turn off the underwater devices
-Remote desktop to the NMS Server, and use the espy client to stop all the devices. 
-    * Logon to espy as "System Administrator". If user is already connected from another desktop
-you will need to connect to that other desktop.
-    * Hebida
+Remote desktop to the NMS Server, and logon to the Espy Client as user System Administrator. Navigate the menu:
+  * Object Administrator
+    * Managed Elements Catalog
+      * Galway PNC Node T...
+        * CEE1-NODE-1`
+          * (Configuration Tab)
+
+Power off all the science ports:
 
 ### 2. Turn off Spiddal virtual machines
 Shut down the windows and linux vms by connecting to them and issuing the appropriate commands.
