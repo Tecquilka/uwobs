@@ -11,6 +11,7 @@ user opsuser
 ## Services
 
   * HAProxy
-  * [dashboard.sysadmin.dm.marine.ie](dashboard.sysadmin.dm.marine.ie)
-  * [vector.sysadmin.dm.marine.ie](vector.sysadmin.dm.marine.ie)
+  * NGINX applications:
+    * [dashboard.sysadmin.dm.marine.ie](dashboard.sysadmin.dm.marine.ie)
+    * [vector.sysadmin.dm.marine.ie](vector.sysadmin.dm.marine.ie)
 

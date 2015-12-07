@@ -10,4 +10,5 @@ user opsuser
 
 ## Services
 
-  * Kafka
+  * Kafka running in supervisor.
+  * Kafka Mirrormaker (spiddal to oranmore) running in supervisor.

@@ -10,4 +10,4 @@ user opsuser
 
 ## Services
 
-  * Kafka
+  * Kafka running in supervisor.
