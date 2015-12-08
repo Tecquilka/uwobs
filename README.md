@@ -7,6 +7,21 @@ spiddal.marine.ie</a>.
 
 The target audience is uwobs system adminstrators. [Controlled Restart](ControlledRestart.md) procedures can be found [here](ControlledRestart.md)
 
+# Switching to/from Maintenance Mode
+
+To turn the public website to maintenance mode:
+
+    ssh dmuser@172.17.1.83 #dockerub
+    cd ~/sites/spiddal.marine.ie/html
+    ln -s -f index-maintenance.html index.html
+
+To turn the public website to live mode:
+
+    ssh dmuser@172.17.1.83 #dockerub
+    cd ~/sites/spiddal.marine.ie/html
+    ln -s -f index-live.html index.html
+
+
 # Server Configurations
 
 This uwobs documentation is maintained on each of the servers, with a script
