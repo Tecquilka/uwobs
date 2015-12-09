@@ -11,6 +11,7 @@ user opsuser
 ## Services
 
   * HAProxy
+  * mestech data collector
   * geonetwork (evaluation)
 
 ## Docker
