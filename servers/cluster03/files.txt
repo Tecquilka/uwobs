@@ -8,3 +8,6 @@
 /etc/apt/apt.conf
 /etc/nginx/sites-available/default
 /etc/haproxy/haproxy.cfg
+/etc/supervisor/conf.d/mestech.conf
+/etc/mestech.conf.example
+/home/opsuser/apps/mestech
