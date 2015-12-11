@@ -8,9 +8,9 @@
 # Script is executed by supervisor,
 # see /etc/supervisor/conf.d/ctd.conf
 ################################################################## 
-while [ $(cat /proc/uptime | awk '{print $1}' | sed 's/\..*$//') -lt 120 ]
+while [ $(cat /proc/uptime | awk '{print $1}' | sed 's/\..*$//') -lt 180 ]
 do 
-   echo waiting for 2 minutes of uptime... >&2 
+   echo waiting for 3 minutes of uptime... >&2 
    sleep 10
 done
 
