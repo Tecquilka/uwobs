@@ -37,7 +37,8 @@
 					"settings": {
 						"device_type": "adcps",
 						"device": "TRDI-WHB600Hz-1323",
-						"ext": ".pd0"
+						"ext": ".pd0",
+						"within_minutes": "20"
 					}
 				},
 				{
@@ -109,8 +110,8 @@
 					"settings": {
 						"application_name": "ADCP",
 						"url": "http://adcp.gconode01.dm.marine.ie/",
-						"warning_timeout": "60",
-						"error_timeout": "300"
+						"warning_timeout": "1200",
+						"error_timeout": "2400"
 					}
 				},
 				{
