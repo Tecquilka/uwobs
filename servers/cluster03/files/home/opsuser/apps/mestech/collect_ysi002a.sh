@@ -15,7 +15,7 @@ data_file=$data_dir/${instrument_id}_$(date '+%Y%m%d').txt
 mkdir -p $state_dir || exit 1
 mkdir -p $data_dir || exit 1
 # Read start date from file, or generate one.
-start_date=$(head -1 $state_file)
+start_date=$(head -1 $state_file | grep -e '^../../2....2...:..:..$')
 if [ "$start_date" == "" ]; then
   start_date=$(date -d "yesterday 00:01" '+%d/%m/%Y')"%2000:00:01"
 fi
