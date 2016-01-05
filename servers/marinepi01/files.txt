@@ -1,0 +1,6 @@
+/etc/hosts
+/etc/hostname
+/etc/network/interfaces
+/etc/wpa_supplicant/wpa_supplicant.conf
+/etc/apt/apt.conf
+/home/pi/.config/lxsession/LXDE-pi/autostart
