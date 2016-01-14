@@ -1,0 +1,178 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Erddap Wave Buoys",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "waveBuoyIndicator",
+					"settings": {
+						"station_id": "Belmullet Wave Buoy Berth A",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "waveBuoyIndicator",
+					"settings": {
+						"station_id": "Belmullet Wave Buoy Berth B",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "waveBuoyIndicator",
+					"settings": {
+						"station_id": "Galway Bay Wave Buoy",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				}
+			]
+		},
+		{
+			"title": "Erddap Weather Buoys",
+			"width": 1,
+			"row": {
+				"4": 1
+			},
+			"col": {
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "weatherBuoyIndicator",
+					"settings": {
+						"station_id": "M2",
+						"warn_minutes": "90",
+						"error_minutes": "150"
+					}
+				},
+				{
+					"type": "weatherBuoyIndicator",
+					"settings": {
+						"station_id": "M4",
+						"warn_minutes": "90",
+						"error_minutes": "150"
+					}
+				},
+				{
+					"type": "weatherBuoyIndicator",
+					"settings": {
+						"station_id": "M6",
+						"warn_minutes": "90",
+						"error_minutes": "150"
+					}
+				}
+			]
+		},
+		{
+			"title": "ERDDAP TIDE GAUGES",
+			"width": 1,
+			"row": {
+				"4": 1
+			},
+			"col": {
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Aranmore",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Ballycotton",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Castletownbere",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Dublin Port",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Dunmore",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Galway Port",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Howth Harbour",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Killybegs Port",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Malin Head",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Skerries Harbour",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [],
+	"columns": 4
+}
