@@ -37,7 +37,7 @@
                                 return updateStateFromErddap(state+1,urls,url);
                              }else{
                                  var ok = state == 0?"OK":"LATE";
-                                 stateObject["status"] = "<a target='_blank' href='"+url+"'>"+ok+"</a>";
+                                 stateObject["status"] = "<a target='_blank' href='"+url.replace("json","htmlTable")+"'>"+ok+"</a>";
                                  stateObject.value=state;
                                 _updateState();
                              }
@@ -46,7 +46,7 @@
                              updateStateFromErddap(state+1,urls,url);
                       });
                    }else{
-                          stateObject["status"] = "<a target='_blank' href='"+prev_url+"'>PROBLEM</a>";
+                          stateObject["status"] = "<a target='_blank' href='"+prev_url.replace("json","htmlTable")+"'>PROBLEM</a>";
                           stateObject.value = state;
                          _updateState();
                    }

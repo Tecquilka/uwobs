@@ -51,6 +51,15 @@
 						"warn_days": "0",
 						"error_days": "0"
 					}
+				},
+				{
+					"type": "forecastIndicator",
+					"settings": {
+						"title": "Connemara Model",
+						"url": "http://erddap.marine.ie/erddap/griddap/IMI_CONN_2D.json?time[(CHECKDATET00:00:00Z):1:(CHECKDATET00:00:00Z)]",
+						"warn_days": "3",
+						"error_days": "2"
+					}
 				}
 			]
 		},
