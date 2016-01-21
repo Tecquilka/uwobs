@@ -21,8 +21,8 @@
 					"settings": {
 						"title": "GFS Weather Data",
 						"url": "http://erddap.marine.ie/erddap/tabledap/GFS-WeatherTimeSeries.json?time,stationID&time=CHECKDATET00:00:00Z&stationID=%22Galway%22",
-						"warn_days": "6",
-						"error_days": "5"
+						"warn_days": "5",
+						"error_days": "4"
 					}
 				},
 				{
@@ -48,8 +48,8 @@
 					"settings": {
 						"title": "Bantry ASIMUTH",
 						"url": "http://erddap2.marine.ie/erddap/griddap/BANTRY_PARTICLES.json?time[(CHECKDATET00:00:00Z):1:(CHECKDATET00:00:00Z)]",
-						"warn_days": "3",
-						"error_days": "2"
+						"warn_days": "0",
+						"error_days": "0"
 					}
 				}
 			]
@@ -58,9 +58,11 @@
 			"title": "Services",
 			"width": 1,
 			"row": {
+				"3": 1,
 				"4": 1
 			},
 			"col": {
+				"3": 2,
 				"4": 2
 			},
 			"col_width": 1,
@@ -69,7 +71,7 @@
 					"type": "miprIndicator",
 					"settings": {
 						"title": "Cluster Management Software",
-						"url": "http://10.11.0.74/",
+						"url": "http://spiddal.marine.ie/ping/cluster",
 						"link": "http://10.11.0.74/"
 					}
 				},
@@ -77,8 +79,8 @@
 					"type": "miprIndicator",
 					"settings": {
 						"title": "Thredds",
-						"url": "http://milas.marine.ie/",
-						"link": "http://milas.marine.ie/"
+						"url": "http://spiddal.marine.ie/ping/thredds",
+						"link": "http://milas.marine.ie/thredds"
 					}
 				}
 			]
