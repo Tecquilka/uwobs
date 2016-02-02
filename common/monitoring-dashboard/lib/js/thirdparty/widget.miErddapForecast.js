@@ -36,9 +36,6 @@
                              if(data.table.rows.length == 0){
                                 return updateStateFromErddap(state+1,urls,url,hours);
                              }else{
-                                 if(state>0&&hours>0&&new Date().getHours()<hours){
-                                    state = state-1;
-                                 }
                                  var ok = state == 0?"OK":"LATE";
                                  stateObject["status"] = "<a target='_blank' href='"+url.replace("json","htmlTable")+"'>"+ok+"</a>";
                                  stateObject.value=state;
@@ -46,6 +43,9 @@
                              }
                           }
                       }).fail(function(){
+                             if(state>0&&hours>0&&new Date().getHours()<hours){
+                                 state = state-1;
+                             }
                              updateStateFromErddap(state+1,urls,url,hours);
                       });
                    }else{
