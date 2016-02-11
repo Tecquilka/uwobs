@@ -375,6 +375,15 @@
 						"warning_timeout": "1800",
 						"error_timeout": "3600"
 					}
+				},
+				{
+					"type": "midasApplicationIndicator",
+					"settings": {
+						"application_name": "AIS Rinville to Kafka",
+						"url": "http://aisrinville12kafka.dm.marine.ie",
+						"warning_timeout": "60",
+						"error_timeout": "300"
+					}
 				}
 			]
 		}
