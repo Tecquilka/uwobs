@@ -14,4 +14,9 @@ user opsuser
   * NGINX applications:
     * [dashboard.sysadmin.dm.marine.ie](dashboard.sysadmin.dm.marine.ie)
     * [vector.sysadmin.dm.marine.ie](vector.sysadmin.dm.marine.ie)
+    * [weather.dm.marine.ie](weather.dm.marine.ie)
+    * [aisrinville12kafka.dm.marine.ie](aisrinville12kafka.dm.marine.ie)
+  * Docker applications:
+    * [weewx](weather.dm.marine.ie)
+  * kplex
 

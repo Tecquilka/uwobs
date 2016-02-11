@@ -10,3 +10,5 @@
 /etc/nginx/sites-available/vector
 /etc/nginx/sites-available/monitoring-dashboard
 /etc/haproxy/haproxy.cfg
+/etc/supervisor/conf.d/
+/etc/kplex.conf
