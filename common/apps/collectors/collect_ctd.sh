@@ -24,8 +24,8 @@ ARCHIVER=$(dirname $0)/archive_file.sh
 HTTP_PORT=8082
 KAFKA_SERVER=localhost
 KAFKA_TOPIC=spiddal-ctd
-PYTHON=/home/gcouser/virtualenv/serial2kafka/bin/python
-CATSERIAL=/home/gcouser/apps/catserial/catserial.py
+PYTHON=$HOME/virtualenv/serial2kafka/bin/python
+CATSERIAL=$(dirname $0)/../catserial/catserial.py
 
 mkdir -p $DATA_DIR || exit 1
 mkdir -p $DATA_DIR/Data || exit 1

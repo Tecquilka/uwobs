@@ -6,5 +6,4 @@
 /etc/hostname
 /etc/squid3/squid.conf
 /etc/supervisor/conf.d
-/home/gcouser/bin
 /home/gcouser/cron.tab
