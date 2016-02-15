@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description='collect adcp data into a file')
 parser.add_argument('--server', required=True, help='adcp server ip address to connect to')
 parser.add_argument('--port', required=True, type=int, help='adcp port to connect to')
 parser.add_argument('--source', required=True, help='Name or id of the source to be included in the output')
-parser.add_argument('--timeout', type=int, default=300, help='Number of seconds to wait for messages before giving up, default=300 (5 minutes)')
+parser.add_argument('--timeout', type=int, default=1200, help='Number of seconds to wait for messages before giving up, default=1200 (20 minutes)')
 parser.add_argument('--http-port', type=int, default=8085, help='HTTP web server port showing latest message, default is 8085')
 args = parser.parse_args()
 
