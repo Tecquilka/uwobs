@@ -21,14 +21,14 @@ depth = 20.0
 cluster = Cluster(['data01','data02','data03'])
 session = cluster.connect('das')
 prepared_insert = SimpleStatement("""
-    INSERT INTO fluorometer (instrument_id, time, lat, lon, depth, clock_date, clock_time, fluorescence_wavelength, chl_count, turbidity_wavelength, thermistor, ntu_count)
-    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    INSERT INTO fluorometer (instrument_id, time, lat, lon, depth, clock_date, clock_time, fluorescence_wavelength, chl_count, turbidity_wavelength, thermistor, ntu_count, chl, ntu)
+    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
                                    """)
 sys.stderr.write("connected to cassandra\n")
 client = KafkaClient(hosts="kafka01:9092,kafka02:9092,kafka03:9092")
 topic = client.topics['spiddal-fluorometer']
 consumer = topic.get_simple_consumer(auto_commit_enable=True,
-                                     consumer_group="fluorometer2cassandra_v2", 
+                                     consumer_group="fluorometer2cassandra_v3", 
                                      auto_offset_reset=OffsetType.EARLIEST,
                                      reset_offset_on_start=False)
 
@@ -52,9 +52,11 @@ for message in consumer:
         values = data.split()
         if(len(values) == 7) and all(is_number(i) for i in values[2:]):
 
-            (Date,Time,FluorescenceWavelength,CHLCount,TurbidityWavelength,NTU,Thermistor) = values
+            (Date,Time,FluorescenceWavelength,CHLCount,TurbidityWavelength,NTUCount,Thermistor) = values
+            CHL = round(0.0181 * (float(CHLCount)-49.0),4);
+            NTU = round(0.0483*(float(NTUCount) - 50.0),4);
             session.execute(
-                prepared_insert,(source,timestamp,lat,lon,depth,Date,Time,int(FluorescenceWavelength),int(CHLCount),int(TurbidityWavelength),int(Thermistor),int(NTU))
+                prepared_insert,(source,timestamp,lat,lon,depth,Date,Time,int(FluorescenceWavelength),int(CHLCount),int(TurbidityWavelength),int(Thermistor),int(NTUCount),CHL,NTU)
             )
             killer.ping()
             webserver.update(message.value)
