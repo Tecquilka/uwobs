@@ -52,7 +52,7 @@ for message in consumer:
         values = data.split()
         if(len(values) == 7) and all(is_number(i) for i in values[2:]):
 
-            (Date,Time,FluorescenceWavelength,CHLCount,TurbidityWavelength,Thermistor,NTU) = values
+            (Date,Time,FluorescenceWavelength,CHLCount,TurbidityWavelength,NTU,Thermistor) = values
             session.execute(
                 prepared_insert,(source,timestamp,lat,lon,depth,Date,Time,int(FluorescenceWavelength),int(CHLCount),int(TurbidityWavelength),int(Thermistor),int(NTU))
             )
