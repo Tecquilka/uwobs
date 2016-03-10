@@ -1,0 +1,2 @@
+* * * * * sudo route -n add default gw 10.3.11.254 dev wlan0 2>/dev/null && exit 1
+30 13 * * * sudo shutdown -h now # shut down daily at 7pm

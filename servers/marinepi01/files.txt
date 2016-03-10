@@ -4,3 +4,7 @@
 /etc/wpa_supplicant/wpa_supplicant.conf
 /etc/apt/apt.conf
 /home/pi/.config/lxsession/LXDE-pi/autostart
+/home/pi/cron.tab
+/home/pi/kiosk.sh
+/home/pi/kiosk.url
+/home/pi/README.md
