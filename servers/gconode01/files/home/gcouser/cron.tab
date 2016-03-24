@@ -1,1 +1,2 @@
-* * * * * flock -n /tmp/hydrophone.lock -c "rsync -avz --remove-source-files -e ssh --rsync-path bin/rsync icListen@172.16.255.253:Data /home/gcouser/hydrophone/"
+* * * * * /home/gcouser/hydrophone/bin/collect_hydrophone.sh
+* * * * * sleep 30 && /home/gcouser/hydrophone/bin/collect_hydrophone.sh
