@@ -8,6 +8,7 @@ import datetime
 import argparse
 from midas import WebServer, KillerMonitor, is_number
 from time import time as now, sleep
+import subprocess
 
 parser = argparse.ArgumentParser(description='collect adcp data into a file')
 parser.add_argument('--server', required=True, help='adcp server ip address to connect to')
@@ -15,6 +16,9 @@ parser.add_argument('--port', required=True, type=int, help='adcp port to connec
 parser.add_argument('--source', required=True, help='Name or id of the source to be included in the output')
 parser.add_argument('--timeout', type=int, default=1200, help='Number of seconds to wait for messages before giving up, default=1200 (20 minutes)')
 parser.add_argument('--http-port', type=int, default=8085, help='HTTP web server port showing latest message, default is 8085')
+parser.add_argument('--kafka-server', default='localhost', help='kafka server, default is localhost')
+parser.add_argument('--kafka-topic', default='spiddal-adcp', help='kafka topic, default is spiddal-adcp')
+parser.add_argument('--kafkacat', default='/usr/local/bin/kafkacat', help='path to kafkacat')
 args = parser.parse_args()
 
 folder = '/home/gcouser/adcp'
@@ -78,6 +82,13 @@ while True:
                if first_time or os.stat(filename).st_size < 211:
                    os.unlink(filename)
                    first_time = False
+               else:
+                   try:
+                       subprocess.call( [args.kafkacat, '-P', '-b', args.kafka_server, '-t',
+                                    args.kafka_topic, '-p', '0', filename])
+                   except Exception, e:
+                       print >> sys.stderr, 'problem writing to kafka: %s' % e
+
             nodata = True
             sleep(1)
             continue
