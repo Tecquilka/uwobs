@@ -23,6 +23,14 @@ Shut down the windows and linux vms by connecting to them and issuing the approp
   * [gconode01](servers/gconode01/)
 
 ### 3. Turn off Oranmore virtual machines
+Use one of the following two methods
+#### A. Use rundeck job to perform the following actions:
+  * 1 Stop kafka vms
+  * 2 Stop data vms
+  * 3 Stop cluster01-04 vms
+  * 4 Stop rundeck vm
+
+#### B. From the Command Line
 From a shell on [cluster01](servers/cluster01) you can easily shutdown the servers with the following
 command which will prompt for passwords if required.
 
@@ -56,6 +64,7 @@ Power on the following science ports:
 
 ### 3. Turn on Spiddal virtual machines
 The Spiddal VM's can be started from hypervisor gco1 172.16.255.230
+Use powershell script [C:\Users\Administrator\Desktop\start_uwobs_vms.ps1](servers/gco1/files/Users/Administrator/Desktop/start_uwobs_vms.ps1)
   * [gcoinstsrv01](servers/gcoinstsrv01/)
   * [gcoinstsrv02](servers/gcooinstsrv02/)
   * [gconode01](servers/gconode01/)
@@ -69,6 +78,10 @@ have continued running on battery and have the correct time, otherwise use the w
 
 ### 5. Turn on Oranmore virtual machines
 Now the Spiddal VM's can be started from hypervisor dmzdmvhost 172.17.1.84
+
+Use powershell script [C:\Users\Administrator\Desktop\start_uwobs_vms.ps1](servers/dmzdmvhost/files/Users/Administrator/Desktop/start_uwobs_vms.ps1)
+
+The following VM' will be started:
   * [cluster01](servers/cluster01)
   * [cluster02](servers/cluster02)
   * [cluster03](servers/cluster03)
@@ -90,5 +103,7 @@ Remote desktop to the NMS Server 172.16.255.15
   * If all else fails set auto focus and try various presets or resort to manually searching for something visible.
 
 ### 7. Restart some added services
-  * On [cluster01](servers/cluster01) `docker start erddap`
-  * On [cluster03](servers/cluster03) `docker start geonetwork_postgis` then after 10 seconds or so `docker start geonetwork`
+  * Run the (start all docker services)[http://rundeck.dm.marine.ie/project/uwobs/jobs/docker] rundeck job.
+
+### 8. check the dashboard
+  * (uwobs dashboard)[http://dashboard.sysadmin.dm.marine.ie/]
