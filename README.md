@@ -7,15 +7,17 @@ spiddal.marine.ie</a>.
 
 The target audience is uwobs system adminstrators. [Controlled Restart](ControlledRestart.md) procedures can be found [here](ControlledRestart.md)
 
+[Adding a new collector](AddingANewCollector.md) procedures can be found [here](AddingANewCollector.md)
+
 # Switching to/from Maintenance Mode
 
-To turn the public website to maintenance mode:
+To turn the public website to maintenance mode use the rundeck job or the steps below:
 
     ssh dmuser@172.17.1.83 #dockerub
     cd ~/sites/spiddal.marine.ie/html
     ln -s -f index-maintenance.html index.html
 
-To turn the public website to live mode:
+To turn the public website to live mode use the rundeck job or the steps below:
 
     ssh dmuser@172.17.1.83 #dockerub
     cd ~/sites/spiddal.marine.ie/html
