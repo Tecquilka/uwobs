@@ -384,6 +384,15 @@
 						"warning_timeout": "60",
 						"error_timeout": "300"
 					}
+				},
+				{
+					"type": "midasApplicationIndicator",
+					"settings": {
+						"application_name": "AIRMAR Rinville to Kafka",
+						"url": "http://airmarrinville12kafka.dm.marine.ie",
+						"warning_timeout": "60",
+						"error_timeout": "300"
+					}
 				}
 			]
 		}
