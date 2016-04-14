@@ -6,8 +6,11 @@ may be required to restart those. That scenario is not considered here.
 
 ## Controlled Shutdown
 
+### 0. Turn site on maintenance mode
+Use the [rundeck job](http://rundeck.dm.marine.ie/project/uwobs/jobs/spiddal.marine.ie)
+
 ### 1. Turn off the underwater devices
-Remote desktop to the NMS Server, and logon to the Espy Client as user System Administrator. Navigate the menu:
+Remote desktop to the NMS Server 172.16.255.15 and logon to the Espy Client as user System Administrator. Navigate the menu:
   * Object Administrator
     * Managed Elements Catalog
       * Galway PNC Node T...
@@ -15,20 +18,26 @@ Remote desktop to the NMS Server, and logon to the Espy Client as user System Ad
           * (Configuration Tab)
 
 Power off all the science ports:
+  * 1 (Hydrophone)
+  * 6 (CTD)
+  * 7 (Turb/Fluor)
+  * 10 (Vemco)
+  * 12 (ADCP)
+  * 18 (HDTV)
 
 ### 2. Turn off Spiddal virtual machines
 Shut down the windows and linux vms by connecting to them and issuing the appropriate commands.
-  * [gcoinstsrv01](servers/gcoinstsrv01/)
-  * [gcoinstsrv02](servers/gcooinstsrv02/)
-  * [gconode01](servers/gconode01/)
+  * [gcoinstsrv01 172.16.255.225](servers/gcoinstsrv01/) windowsvm
+  * [gcoinstsrv02 172.16.255.227](servers/gcooinstsrv02/) windowsvm
+  * [gconode01 172.16.255.226](servers/gconode01/) Use rundeck
 
 ### 3. Turn off Oranmore virtual machines
 Use one of the following two methods
-#### A. Use rundeck job to perform the following actions:
+#### A. Use [rundeck job](http://rundeck.dm.marine.ie/project/uwobs/jobs/cluster) to perform the following actions:
   * 1 Stop kafka vms
   * 2 Stop data vms
   * 3 Stop cluster01-04 vms
-  * 4 Stop rundeck vm
+  * 4 Stop rundeck vm NB this may not work in which case use ssh to [cluster05 172.17.1.96](servers/cluster05)
 
 #### B. From the Command Line
 From a shell on [cluster01](servers/cluster01) you can easily shutdown the servers with the following
@@ -47,7 +56,7 @@ command which will prompt for passwords if required.
   * [dockerub](servers/dockerub/)
 
 ### 2. Turn on the underwater devices
-Remote desktop to the NMS Server, and logon to the Espy Client as user System Administrator. Navigate the menu:
+Remote desktop to the NMS Server 172.16.255.15 and logon to the Espy Client as user System Administrator. Navigate the menu:
   * Object Administrator
     * Managed Elements Catalog
       * Galway PNC Node T...
@@ -107,3 +116,6 @@ Remote desktop to the NMS Server 172.16.255.15
 
 ### 8. check the dashboard
   * (uwobs dashboard)[http://dashboard.sysadmin.dm.marine.ie/]
+
+### 9. Turn site off maintenance mode
+Use the [rundeck job](http://rundeck.dm.marine.ie/project/uwobs/jobs/spiddal.marine.ie)
