@@ -16,6 +16,8 @@ user opsuser
 
 ## Docker
 
+  docker run -d --restart=always --name=sci-wms -p 7002:7002 -v /data/sci-wms:/srv/sciwms/db/ axiom/sci-wms
+
 geonetwork running for evaluation by Trevor/Adam must be restarted manually after a reboot using the following commands.
 
   docker start geonetwork_postgis
