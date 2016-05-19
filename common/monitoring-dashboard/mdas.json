@@ -39,6 +39,14 @@
 						"warn_minutes": "60",
 						"error_minutes": "120"
 					}
+				},
+				{
+					"type": "waveBuoyIndicator",
+					"settings": {
+						"station_id": "Westwave MK3",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
 				}
 			]
 		},
@@ -46,9 +54,11 @@
 			"title": "Erddap Weather Buoys",
 			"width": 1,
 			"row": {
+				"3": 1,
 				"4": 1
 			},
 			"col": {
+				"3": 3,
 				"4": 3
 			},
 			"col_width": 1,
@@ -64,7 +74,23 @@
 				{
 					"type": "weatherBuoyIndicator",
 					"settings": {
+						"station_id": "M3",
+						"warn_minutes": "90",
+						"error_minutes": "150"
+					}
+				},
+				{
+					"type": "weatherBuoyIndicator",
+					"settings": {
 						"station_id": "M4",
+						"warn_minutes": "90",
+						"error_minutes": "150"
+					}
+				},
+				{
+					"type": "weatherBuoyIndicator",
+					"settings": {
+						"station_id": "M5",
 						"warn_minutes": "90",
 						"error_minutes": "150"
 					}
@@ -83,9 +109,11 @@
 			"title": "ERDDAP TIDE GAUGES",
 			"width": 1,
 			"row": {
+				"3": 1,
 				"4": 1
 			},
 			"col": {
+				"3": 1,
 				"4": 1
 			},
 			"col_width": 1,
