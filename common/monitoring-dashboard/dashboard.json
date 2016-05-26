@@ -7,10 +7,12 @@
 			"title": "Current Data Archives",
 			"width": 1,
 			"row": {
+				"2": 1,
 				"3": 1,
 				"4": 1
 			},
 			"col": {
+				"2": 2,
 				"3": 2,
 				"4": 2
 			},
@@ -63,10 +65,12 @@
 			"title": "Cassandra Servers",
 			"width": 1,
 			"row": {
+				"2": 11,
 				"3": 1,
 				"4": 1
 			},
 			"col": {
+				"2": 1,
 				"3": 3,
 				"4": 4
 			},
@@ -93,13 +97,157 @@
 			]
 		},
 		{
+			"title": "spiddal.marine.ie website",
+			"width": 1,
+			"row": {
+				"2": 19,
+				"3": 9,
+				"4": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 3,
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "micchIndicator",
+					"settings": {
+						"title": "Streaming Video",
+						"url": "http://spiddal.marine.ie/spidvid/hls/spiddal1.m3u8",
+						"link": "http://spiddal.marine.ie"
+					}
+				}
+			]
+		},
+		{
+			"title": "Processing Servers",
+			"width": 1,
+			"row": {
+				"2": 23,
+				"3": 11,
+				"4": 9
+			},
+			"col": {
+				"2": 1,
+				"3": 1,
+				"4": 4
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster02"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster03"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster04"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cluster05"
+					}
+				}
+			]
+		},
+		{
+			"title": "Kakfa Servers",
+			"width": 1,
+			"row": {
+				"2": 13,
+				"3": 13,
+				"4": 1
+			},
+			"col": {
+				"2": 2,
+				"3": 3,
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka02"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka03"
+					}
+				}
+			]
+		},
+		{
+			"title": "Primary Servers",
+			"width": 1,
+			"row": {
+				"2": 21,
+				"3": 23,
+				"4": 9
+			},
+			"col": {
+				"2": 2,
+				"3": 1,
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "spidvid"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "gconode01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "dockerub"
+					}
+				}
+			]
+		},
+		{
 			"title": "spiddal data collectors",
 			"width": 1,
 			"row": {
+				"2": 35,
 				"3": 1,
 				"4": 5
 			},
 			"col": {
+				"2": 1,
 				"3": 1,
 				"4": 1
 			},
@@ -144,81 +292,15 @@
 			]
 		},
 		{
-			"title": "spiddal.marine.ie website",
-			"width": 1,
-			"row": {
-				"3": 9,
-				"4": 1
-			},
-			"col": {
-				"3": 3,
-				"4": 1
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "micchIndicator",
-					"settings": {
-						"title": "Streaming Video",
-						"url": "http://spiddal.marine.ie/spidvid/hls/spiddal1.m3u8",
-						"link": "http://spiddal.marine.ie"
-					}
-				}
-			]
-		},
-		{
-			"title": "Processing Servers",
-			"width": 1,
-			"row": {
-				"3": 11,
-				"4": 9
-			},
-			"col": {
-				"3": 1,
-				"4": 4
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "cluster01"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "cluster02"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "cluster03"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "cluster04"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "cluster05"
-					}
-				}
-			]
-		},
-		{
 			"title": "Monthly Compress Archives",
 			"width": 1,
 			"row": {
+				"2": 29,
 				"3": 13,
 				"4": 13
 			},
 			"col": {
+				"2": 2,
 				"3": 2,
 				"4": 2
 			},
@@ -262,79 +344,15 @@
 			]
 		},
 		{
-			"title": "Kakfa Servers",
-			"width": 1,
-			"row": {
-				"3": 13,
-				"4": 1
-			},
-			"col": {
-				"3": 3,
-				"4": 3
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka01"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka02"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka03"
-					}
-				}
-			]
-		},
-		{
-			"title": "Primary Servers",
-			"width": 1,
-			"row": {
-				"3": 23,
-				"4": 9
-			},
-			"col": {
-				"3": 1,
-				"4": 3
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "spidvid"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "gconode01"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "dockerub"
-					}
-				}
-			]
-		},
-		{
 			"title": "Applications",
 			"width": 1,
 			"row": {
+				"2": 45,
 				"3": 31,
 				"4": 15
 			},
 			"col": {
+				"2": 1,
 				"3": 1,
 				"4": 1
 			},
@@ -392,6 +410,65 @@
 						"url": "http://airmarrinville12kafka.dm.marine.ie",
 						"warning_timeout": "60",
 						"error_timeout": "300"
+					}
+				}
+			]
+		},
+		{
+			"title": "MQTT",
+			"width": 1,
+			"row": {
+				"2": 1,
+				"4": 17
+			},
+			"col": {
+				"2": 1,
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mimqttIndicator",
+					"settings": {
+						"title": "spiddal-ctd",
+						"url": "http://mqtt.marine.ie",
+						"topic": "spiddal-ctd",
+						"warn_seconds": 30,
+						"error_seconds": 300,
+						"link": "http://mqtt.marine.ie"
+					}
+				},
+				{
+					"type": "mimqttIndicator",
+					"settings": {
+						"title": "spiddal-fluorometer",
+						"url": "http://mqtt.marine.ie",
+						"topic": "spiddal-fluorometer",
+						"warn_seconds": 30,
+						"error_seconds": 300,
+						"link": "http://mqtt.marine.ie"
+					}
+				},
+				{
+					"type": "mimqttIndicator",
+					"settings": {
+						"title": "airmar-rinville-1",
+						"url": "http://mqtt.marine.ie",
+						"topic": "airmar-rinville-1",
+						"warn_seconds": 30,
+						"error_seconds": 300,
+						"link": "http://mqtt.marine.ie"
+					}
+				},
+				{
+					"type": "mimqttIndicator",
+					"settings": {
+						"title": "spiddal-hydrophone",
+						"url": "http://mqtt.marine.ie",
+						"topic": "spiddal-hydrophone",
+						"warn_seconds": 300,
+						"error_seconds": 1800,
+						"link": "http://mqtt.marine.ie"
 					}
 				}
 			]
