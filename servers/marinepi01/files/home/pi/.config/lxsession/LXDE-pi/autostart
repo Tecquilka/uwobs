@@ -5,4 +5,4 @@
 @xset s noblank
 @sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' ~/.config/chromium/Default/Preferences
 # @chromium-browser --noerrdialogs --kiosk http://dashboard.sysadmin.dm.marine.ie --incognito
-/home/pi/kiosk.sh
+@/home/pi/kiosk.sh
