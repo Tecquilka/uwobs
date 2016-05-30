@@ -431,44 +431,44 @@
 					"type": "mimqttIndicator",
 					"settings": {
 						"title": "spiddal-ctd",
-						"url": "http://mqtt.marine.ie",
+						"url": "http://mqtt.dm.marine.ie",
 						"topic": "spiddal-ctd",
 						"warn_seconds": 30,
 						"error_seconds": 300,
-						"link": "http://mqtt.marine.ie"
+						"link": "http://mqtt.dm.marine.ie"
 					}
 				},
 				{
 					"type": "mimqttIndicator",
 					"settings": {
 						"title": "spiddal-fluorometer",
-						"url": "http://mqtt.marine.ie",
+						"url": "http://mqtt.dm.marine.ie",
 						"topic": "spiddal-fluorometer",
 						"warn_seconds": 30,
 						"error_seconds": 300,
-						"link": "http://mqtt.marine.ie"
+						"link": "http://mqtt.dm.marine.ie"
 					}
 				},
 				{
 					"type": "mimqttIndicator",
 					"settings": {
 						"title": "airmar-rinville-1",
-						"url": "http://mqtt.marine.ie",
+						"url": "http://mqtt.dm.marine.ie",
 						"topic": "airmar-rinville-1",
 						"warn_seconds": 30,
 						"error_seconds": 300,
-						"link": "http://mqtt.marine.ie"
+						"link": "http://mqtt.dm.marine.ie"
 					}
 				},
 				{
 					"type": "mimqttIndicator",
 					"settings": {
 						"title": "spiddal-hydrophone",
-						"url": "http://mqtt.marine.ie",
+						"url": "http://mqtt.dm.marine.ie",
 						"topic": "spiddal-hydrophone",
 						"warn_seconds": 300,
 						"error_seconds": 1800,
-						"link": "http://mqtt.marine.ie"
+						"link": "http://mqtt.dm.marine.ie"
 					}
 				}
 			]
