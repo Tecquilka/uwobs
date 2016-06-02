@@ -9,5 +9,7 @@
 /etc/nginx/sites-available/default
 /etc/haproxy/haproxy.cfg
 /etc/supervisor/conf.d/mestech.conf
+/etc/supervisor/conf.d/ais.conf
 /etc/mestech.conf.example
 /home/opsuser/apps/mestech
+/home/opsuser/apps/ais
