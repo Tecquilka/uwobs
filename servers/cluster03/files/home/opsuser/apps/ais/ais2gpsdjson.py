@@ -25,10 +25,8 @@ if not os.path.exists(offsets_dir):
     os.makedirs(offsets_dir)
 
 
-command = """(
-kafkacat -X topic.offset.store.path=/var/lib/consumer-offsets/ais-rinville-1-2gpsdjson -o stored -C -b kafka01,kafka02,kafka03 -t ais-rinville-1 | sed -e 's/^[^|]*|[^|]*|//' | gpsdecode | tee >(kafkacat -P -b kafka01,kafka02,kafka03 -p 0 -t ais-rinville-1-gpsdjson)
-)"""
-process = subprocess.Popen(command, shell=True, executable='/bin/bash', stdout=subprocess.PIPE)
+command = """kafkacat -X topic.offset.store.path=/var/lib/consumer-offsets/ais-rinville-1-2gpsdjson -o stored -C -u -b kafka01,kafka02,kafka03 -t ais-rinville-1 | stdbuf -oL sed -e 's/^[^|]*|[^|]*|//' | stdbuf -oL gpsdecode | stdbuf -oL kafkacat -P -T -b kafka01,kafka02,kafka03 -p 0 -t ais-rinville-1-gpsdjson """
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 for line in iter(process.stdout.readline, ''):
         killer.ping()
         webserver.update(line)
