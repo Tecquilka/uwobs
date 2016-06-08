@@ -8,3 +8,4 @@
 /etc/nginx/nginx.conf
 /etc/supervisor
 /home/dmuser/bin
+/home/dmuser/cron.tab
