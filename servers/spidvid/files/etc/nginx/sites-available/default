@@ -78,6 +78,11 @@ server {
             add_header Cache-Control no-cache;
             add_header 'Access-Control-Allow-Origin' '*';
         }
+        location /recordings {
+            autoindex on;
+            root /home/dmuser;
+        }
+
 
 
 	# Only for nginx-naxsi used with nginx-naxsi-ui : process denied requests
