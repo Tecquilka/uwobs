@@ -19,7 +19,7 @@ for row in d["table"]["rows"]:
       data[station] = {}
    o = data[station]
    for i,val in enumerate(row):
-      if val is not None and not colnames[i] in o:
+      if val is not None:
           o[colnames[i]] = val
 
 for key in data:
