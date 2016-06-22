@@ -13,3 +13,5 @@
 /etc/mestech.conf.example
 /home/opsuser/apps/mestech
 /home/opsuser/apps/ais
+/home/opsuser/apps/buoys
+/home/opsuser/apps/cron.tab
