@@ -2,7 +2,7 @@
 mkdir -p /tmp/hls
 start=$(date +%s)
  /usr/local/bin/ffmpeg -i 'udp://226.0.0.1:1236' \
-                       -vcodec libx264 \
+                       -vcodec copy -an \
                        -flags \
                        -global_header \
                        -hls_time 5 \

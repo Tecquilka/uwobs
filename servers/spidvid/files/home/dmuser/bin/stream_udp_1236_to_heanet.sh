@@ -4,6 +4,6 @@ URL=$(cat /etc/heanet_video_url.txt)
 mkdir -p /tmp/hls
 start=$(date +%s)
  /usr/local/bin/ffmpeg -i 'udp://226.0.0.1:1236' \
-                       -vcodec libx264 \
+                       -vcodec copy -an \
                        -f flv \
                         $URL
