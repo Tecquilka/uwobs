@@ -56,7 +56,7 @@ server {
             add_header 'Access-Control-Allow-Origin' '*';
         }
 
-        location ~* /hls/\*\.ts$ {
+        location ~ /hls\/.*\.ts$ {
             # Serve HLS fragments
             types {
                 video/mp2t ts;
@@ -72,7 +72,6 @@ server {
             # Serve HLS fragments
             types {
                 application/vnd.apple.mpegurl m3u8;
-                video/mp2t ts;
             }
             root /tmp;
             add_header Cache-Control no-cache;

@@ -10,6 +10,7 @@ start=$(date +%s)
                        -hls_flags delete_segments \
                        -start_number $start \
                        -f hls \
-                       /tmp/hls/spiddal1.m3u8 \
-                       -f flv \
-                       rtmp://127.0.0.1/dash/spiddal1 \
+                       /tmp/hls/spiddal1.m3u8
+ #\
+                       #-f flv \
+                       #rtmp://127.0.0.1/dash/spiddal1 \
