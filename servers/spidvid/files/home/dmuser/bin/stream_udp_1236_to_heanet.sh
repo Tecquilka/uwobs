@@ -1,5 +1,7 @@
 #!/bin/sh
 # old url was rtmp://193.1.189.55:1935/marine/marine
+echo this job is moved to gconode02
+exit 1
 URL=$(cat /etc/heanet_video_url.txt)
 mkdir -p /tmp/hls
 start=$(date +%s)
