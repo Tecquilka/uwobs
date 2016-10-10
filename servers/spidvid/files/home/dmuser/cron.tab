@@ -1,2 +1,2 @@
 # if there are recordings from yesterday, delete older recordings
-0 9 * * * /usr/bin/find /home/dmuser/recordings -type f -mtime +0 | grep -q avi$ && /usr/bin/find /home/dmuser/recordings -type f -mtime +1 -delete
+# 0 9 * * * /usr/bin/find /home/dmuser/recordings -type f -mtime +0 | grep -q avi$ && /usr/bin/find /home/dmuser/recordings -type f -mtime +1 -delete
