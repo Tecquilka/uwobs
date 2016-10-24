@@ -1,6 +1,6 @@
 argparse==1.2.1
-cassandra-driver==2.7.2
-futures==3.0.3
+cassandra-driver==3.7.0
+futures==3.0.5
 kazoo==2.2.1
 pykafka==2.0.2
 six==1.10.0

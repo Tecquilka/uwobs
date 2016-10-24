@@ -18,7 +18,7 @@ args = parser.parse_args()
 lat = 53.227333
 lon = -9.266286
 depth = 20.0
-cluster = Cluster(['data01','data02','data03'])
+cluster = Cluster(['cassandra01','cassandra02','cassandra03','cassandra04','cassandra05'])
 session = cluster.connect('das')
 prepared_insert = SimpleStatement("""
     INSERT INTO fluorometer (instrument_id, time, lat, lon, depth, clock_date, clock_time, fluorescence_wavelength, chl_count, turbidity_wavelength, thermistor, ntu_count, chl, ntu)
@@ -28,7 +28,7 @@ sys.stderr.write("connected to cassandra\n")
 client = KafkaClient(hosts="kafka01:9092,kafka02:9092,kafka03:9092")
 topic = client.topics['spiddal-fluorometer']
 consumer = topic.get_simple_consumer(auto_commit_enable=True,
-                                     consumer_group="fluorometer2cassandra_v3", 
+                                     consumer_group="fluorometer2cassandra_v4", 
                                      auto_offset_reset=OffsetType.EARLIEST,
                                      reset_offset_on_start=False)
 

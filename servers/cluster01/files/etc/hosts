@@ -13,6 +13,11 @@
 172.17.1.83     dockerub
 172.16.255.19   spidvid
 172.16.255.226  gconode01
+172.17.1.113	cassandra01
+172.17.1.114	cassandra02
+172.17.1.115	cassandra03
+172.17.1.116	cassandra04
+172.17.1.117	cassandra05
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
