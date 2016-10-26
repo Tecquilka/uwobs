@@ -20,9 +20,9 @@ lon = -9.266286
 depth = 20.0
 cluster = Cluster(['cassandra01','cassandra02','cassandra03','cassandra04','cassandra05'])
 session = cluster.connect('das')
-prepared_insert = SimpleStatement("""
+prepared_insert = session.prepare("""
     INSERT INTO fluorometer (instrument_id, time, lat, lon, depth, clock_date, clock_time, fluorescence_wavelength, chl_count, turbidity_wavelength, thermistor, ntu_count, chl, ntu)
-    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                                    """)
 sys.stderr.write("connected to cassandra\n")
 client = KafkaClient(hosts="kafka01:9092,kafka02:9092,kafka03:9092")
@@ -46,6 +46,7 @@ sys.stderr.write("Web server running on port %d\n" % args.http_port)
 
 if args.verbose:
     sys.stdout.write("\n")
+futures = []
 for message in consumer:
    if message is not None:
         (timestamp,source,data) = message.value.split('|',3)
@@ -55,9 +56,14 @@ for message in consumer:
             (Date,Time,FluorescenceWavelength,CHLCount,TurbidityWavelength,NTUCount,Thermistor) = values
             CHL = round(0.0181 * (float(CHLCount)-49.0),4);
             NTU = round(0.0483*(float(NTUCount) - 50.0),4);
-            session.execute(
-                prepared_insert,(source,timestamp,lat,lon,depth,Date,Time,int(FluorescenceWavelength),int(CHLCount),int(TurbidityWavelength),int(Thermistor),int(NTUCount),CHL,NTU)
-            )
+            timestamp = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%fZ" )
+            bound = prepared_insert.bind((source,timestamp,lat,lon,depth,Date,Time,int(FluorescenceWavelength),int(CHLCount),int(TurbidityWavelength),int(Thermistor),int(NTUCount),CHL,NTU))
+            f = session.execute_async(bound)
+            futures.append(f)
+            if(len(futures))>=8000:
+              for future in futures:
+                future.result()
+              futures = []
             killer.ping()
             webserver.update(message.value)
             if args.verbose:
