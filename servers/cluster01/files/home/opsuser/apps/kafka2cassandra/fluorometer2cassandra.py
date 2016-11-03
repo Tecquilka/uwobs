@@ -15,20 +15,17 @@ parser.add_argument('--http-port', type=int, default=8083, help='HTTP web server
 parser.add_argument('--verbose', type=bool, default=False, help='Whether to write to the console')
 args = parser.parse_args()
 
-lat = 53.227333
-lon = -9.266286
-depth = 20.0
-cluster = Cluster(['cassandra01','cassandra02','cassandra03','cassandra04','cassandra05'])
+cluster = Cluster(['data01','data02','data03'])
 session = cluster.connect('das')
-prepared_insert = session.prepare("""
-    INSERT INTO fluorometer (instrument_id, time, lat, lon, depth, clock_date, clock_time, fluorescence_wavelength, chl_count, turbidity_wavelength, thermistor, ntu_count, chl, ntu)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+prepared_insert = SimpleStatement("""
+    INSERT INTO fluorometer (instrument_id, time, clock_date, clock_time, fluorescence_wavelength, chl_count, turbidity_wavelength, thermistor, ntu_count)
+    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)
                                    """)
 sys.stderr.write("connected to cassandra\n")
 client = KafkaClient(hosts="kafka01:9092,kafka02:9092,kafka03:9092")
 topic = client.topics['spiddal-fluorometer']
 consumer = topic.get_simple_consumer(auto_commit_enable=True,
-                                     consumer_group="fluorometer2cassandra_v4", 
+                                     consumer_group="kafka2cassandra", 
                                      auto_offset_reset=OffsetType.EARLIEST,
                                      reset_offset_on_start=False)
 
@@ -46,24 +43,16 @@ sys.stderr.write("Web server running on port %d\n" % args.http_port)
 
 if args.verbose:
     sys.stdout.write("\n")
-futures = []
 for message in consumer:
    if message is not None:
         (timestamp,source,data) = message.value.split('|',3)
         values = data.split()
         if(len(values) == 7) and all(is_number(i) for i in values[2:]):
 
-            (Date,Time,FluorescenceWavelength,CHLCount,TurbidityWavelength,NTUCount,Thermistor) = values
-            CHL = round(0.0181 * (float(CHLCount)-49.0),4);
-            NTU = round(0.0483*(float(NTUCount) - 50.0),4);
-            timestamp = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%fZ" )
-            bound = prepared_insert.bind((source,timestamp,lat,lon,depth,Date,Time,int(FluorescenceWavelength),int(CHLCount),int(TurbidityWavelength),int(Thermistor),int(NTUCount),CHL,NTU))
-            f = session.execute_async(bound)
-            futures.append(f)
-            if(len(futures))>=8000:
-              for future in futures:
-                future.result()
-              futures = []
+            (Date,Time,FluorescenceWavelength,CHLCount,TurbidityWavelength,Thermistor,NTU) = values
+            session.execute(
+                prepared_insert,(source,timestamp,Date,Time,int(FluorescenceWavelength),int(CHLCount),int(TurbidityWavelength),int(Thermistor),int(NTU))
+            )
             killer.ping()
             webserver.update(message.value)
             if args.verbose:
