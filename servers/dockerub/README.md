@@ -1,8 +1,8 @@
 # dockerub
 
-[previous](../data03/) [next](../gcoinstsrv01/)
+[previous](../cluster05/) [next](../gcoinstsrv01/)
 
-This is the third of three data servers
+This is the server for spiddal.marine.ie
 
 address 172.17.1.83
 

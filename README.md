@@ -83,9 +83,6 @@ Instruments are connected to the shore station in Spiddal where we have
   * [kafka01](servers/kafka01/) kafka server
   * [kafka02](servers/kafka02/) kafka server
   * [kafka03](servers/kafka03/) kafka server
-  * [data01](servers/data01/) cassandra, elasticsearch server
-  * [data02](servers/data02/) cassandra, elasticsearch server
-  * [data03](servers/data03/) cassandra, elasticsearch server
   * [cluster01](servers/cluster01) haproxy, applications server
   * [cluster02](servers/cluster02) haproxy, applications server
   * [cluster03](servers/cluster03) haproxy, applications server
