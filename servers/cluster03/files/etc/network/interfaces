@@ -13,4 +13,6 @@ iface eth0 inet static
 	network 172.17.1.0
 	broadcast 172.17.1.255
 	gateway 172.17.1.1
+        dns-nameservers 193.1.186.2 193.1.186.3
+        dns-search dm.marine.ie
         up ip route add 172.16.0.0/16 via 172.17.1.254 || true
