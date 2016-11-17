@@ -79,19 +79,31 @@
 				{
 					"type": "mipcpIndicator",
 					"settings": {
-						"hostname": "data01"
+						"hostname": "cassandra01"
 					}
 				},
 				{
 					"type": "mipcpIndicator",
 					"settings": {
-						"hostname": "data02"
+						"hostname": "cassandra02"
 					}
 				},
 				{
 					"type": "mipcpIndicator",
 					"settings": {
-						"hostname": "data03"
+						"hostname": "cassandra03"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cassandra04"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "cassandra05"
 					}
 				}
 			]
