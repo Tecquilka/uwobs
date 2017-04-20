@@ -55,7 +55,7 @@
 					"type": "midasIndicator",
 					"settings": {
 						"device_type": "hydrophones",
-						"device": "SBF1323",
+						"device": "SBF1622",
 						"ext": "00.txt"
 					}
 				}
@@ -315,7 +315,7 @@
 					"type": "midasmcIndicator",
 					"settings": {
 						"device_type": "hydrophones",
-						"device": "SBF1323"
+						"device": "SBF1622"
 					}
 				}
 			]
