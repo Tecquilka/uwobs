@@ -180,7 +180,7 @@
 					"type": "micchIndicator",
 					"settings": {
 						"title": "Streaming Video",
-						"url": "http://spiddal.marine.ie/spidvid/hls/spiddal1.m3u8",
+						"url": "https://media.heanet.ie/transcode06/7d04a940e5c4a125642f245e1f7de465/ngrp:_all/chunklist_b819200.m3u8",
 						"link": "http://spiddal.marine.ie"
 					}
 				}
