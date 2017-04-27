@@ -47,7 +47,7 @@
 					"type": "midasIndicator",
 					"settings": {
 						"device_type": "acoustic_telemetry",
-						"device": "VMVR2C450117",
+						"device": "VMVR2C450217",
 						"ext": ".txt"
 					}
 				},
@@ -308,7 +308,7 @@
 					"type": "midasmcIndicator",
 					"settings": {
 						"device_type": "acoustic_telemetry",
-						"device": "VMVR2C450117"
+						"device": "VMVR2C450218"
 					}
 				},
 				{
