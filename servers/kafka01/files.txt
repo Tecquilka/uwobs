@@ -7,3 +7,4 @@
 /home/kafka/kafka/config
 /etc/zookeeper/conf/
 /etc/supervisor/conf.d
+/tmp/fred.txt
