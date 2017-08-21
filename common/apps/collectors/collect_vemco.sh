@@ -23,7 +23,7 @@ SERVER=172.16.255.8
 ARCHIVER=$(dirname $0)/archive_file.sh
 HTTP_PORT=8084
 KAFKA_SERVER=localhost
-KAFKA_TOPIC=spiddal-$TYPE
+KAFKA_TOPIC=$(echo spiddal-$TYPE | sed -e 's/_/-/g')
 PYTHON=$HOME/virtualenv/serial2kafka/bin/python
 CATSERIAL=$(dirname $0)/../catserial/catserial.py
 
