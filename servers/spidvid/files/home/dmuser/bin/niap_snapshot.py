@@ -85,6 +85,14 @@ positions = [
     {"pan":116,"tilt":239},{"pan":116,"tilt":229},{"pan":114,"tilt":223},
     {"pan":111,"tilt":220}
              ]
+# above positions replaced Aug 8th 2017
+positions = [
+    {"pan":105,"tilt":150,"sleep": 6},
+    {"pan":105,"tilt":130,"sleep": 2},
+    {"pan":265,"tilt":150,"sleep": 8},
+    {"pan":265,"tilt":130,"sleep": 2}
+             ]
+
 
 
 # Fast Zoom
@@ -137,10 +145,10 @@ call(["mkdir","-p",folder])
 ffmpeg = ["/usr/local/bin/ffmpeg", "-f", "decklink","-i", "DeckLink Mini Recorder@13","-vf",
                      "drawtext=expansion=normal:fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:reload=1:textfile=/home/dmuser/timenow.txt: x=10: y=690: fontcolor=white: fontsize=20"
                      ]
-restart_streaming = True
-if call(["sudo", "supervisorctl", "stop", "ffmpeg_stream_from_device"]) != 0:
-    ffmpeg = ['/usr/local/bin/ffmpeg','-i','udp://226.0.0.1:1236']
-    restart_streaming = False
+restart_streaming = False #True
+# if call(["sudo", "supervisorctl", "stop", "ffmpeg_stream_from_device"]) != 0:
+    # ffmpeg = ['/usr/local/bin/ffmpeg','-i','udp://226.0.0.1:1236']
+    # restart_streaming = False
     
 # TODO: take the photo now.
 cmd = None
@@ -150,12 +158,13 @@ for position in positions:
   tilt = position["tilt"]
   send(ser,b"GL:"+b"{0:0>3}".format(pan)+b"{0:0>3}".format(tilt))
   read_ack(ser,"GL")
-  sleep(1.5)
+  sleep(position["sleep"])
 
   for i in range(5):
     now = strftime("%Y-%m-%dT%H-%MZ", gmtime())
     file = "{0}/{1}_pan{2:0>3}_tilt{3:0>3}.jpg".format(folder,now,pan,tilt)
-    cmd = ffmpeg + ['-vframes','1','-y',file]
+    cmd = ffmpeg + ['-vframes','1','-q:v','1','-y',file]
+    #cmd = ffmpeg + ['-t','1','-f','image2',file]
     status = call(cmd,shell=False)
     if status:
         call(["rm","-f",file])
