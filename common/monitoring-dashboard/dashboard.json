@@ -30,7 +30,7 @@
 					"type": "midasIndicator",
 					"settings": {
 						"device_type": "ctds",
-						"device": "I-OCEAN7-304-XXXX",
+						"device": "I-OCEAN7-304-0616641",
 						"ext": ".txt"
 					}
 				},
@@ -294,7 +294,7 @@
 					"type": "midasmcIndicator",
 					"settings": {
 						"device_type": "ctds",
-						"device": "I-OCEAN7-304-XXXX"
+						"device": "I-OCEAN7-304-0616641"
 					}
 				},
 				{
