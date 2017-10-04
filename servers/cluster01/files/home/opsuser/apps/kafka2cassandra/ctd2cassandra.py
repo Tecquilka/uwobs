@@ -6,6 +6,7 @@ from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
 import datetime
 import sys
+import time
 from midas import WebServer, KillerMonitor, is_number
 import argparse
 
@@ -18,11 +19,12 @@ args = parser.parse_args()
 lat = 53.227333
 lon = -9.266286
 depth = 20.0
+#cluster = Cluster(['cassandra01','cassandra02','cassandra03','cassandra04','cassandra05'])
 cluster = Cluster(['data01','data02','data03'])
 session = cluster.connect('das')
-prepared_insert = SimpleStatement("""
+prepared_insert = session.prepare("""
     INSERT INTO ctd (instrument_id, time, lat, lon, depth, press, temp, cond, sal, soundv, ttime)
-    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?)
                                    """)
 sys.stderr.write("connected to cassandra\n")
 client = KafkaClient(hosts="kafka01:9092,kafka02:9092,kafka03:9092")
@@ -46,6 +48,8 @@ sys.stderr.write("Web server running on port %d\n" % args.http_port)
 
 if args.verbose:
     sys.stdout.write("\n")
+oldtime = time.time()
+futures = []
 for message in consumer:
    if message is not None:
         (timestamp,source,data) = message.value.split('|',3)
@@ -53,11 +57,18 @@ for message in consumer:
         if(len(values) == 6) and all(is_number(i) for i in values[0:5]):
 
             (Press,Temp,Cond,Sal,SoundV,Time) = values
-            session.execute(
-                prepared_insert,(source,timestamp,lat,lon,depth,float(Press),float(Temp),float(Cond),float(Sal),float(SoundV),Time)
-            )
-            killer.ping()
-            webserver.update(message.value)
-            if args.verbose:
+            timestamp = datetime.datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%fZ" )
+            bound = prepared_insert.bind((source,timestamp,lat,lon,depth,float(Press),float(Temp),float(Cond),float(Sal),float(SoundV),Time))
+            f = session.execute_async(bound)
+            futures.append(f)
+            if(len(futures))>=8000:
+              for future in futures:
+                future.result()
+              futures = []
+            if time.time() - oldtime > 5:
+              oldtime = time.time()
+              killer.ping()
+              webserver.update(message.value)
+              if args.verbose:
                 sys.stdout.write("\r{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}".format(source,timestamp,Press,Temp,Cond,Sal,SoundV,Time))
                 sys.stdout.flush()

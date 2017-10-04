@@ -18,6 +18,7 @@
 172.17.1.115	cassandra03
 172.17.1.116	cassandra04
 172.17.1.117	cassandra05
+172.16.255.222 gconode03
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
