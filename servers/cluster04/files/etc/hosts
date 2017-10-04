@@ -12,7 +12,8 @@
 172.17.1.96	cluster05
 172.17.1.83     dockerub
 172.16.255.19   spidvid
-172.16.255.226  gconode01
+172.16.255.222 gconode03
+
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
