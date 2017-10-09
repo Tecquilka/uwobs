@@ -8,7 +8,7 @@
 #
 ################################################################## 
 
-stdbuf -oL kafkacat -C -b kafka01 -t ais-belmullet-json -p 0 -o -1 |  netcat -l 9987 -k
+nc6 --continuous -l -p 9987 -e 'stdbuf -oL kafkacat -C -b kafka01 -t ais-belmullet-json -p 0 -o -1'
 
 status=$?
 while [ $SECONDS -lt 31 ]; do
