@@ -7,3 +7,4 @@
 /etc/nginx/sites-available/default
 /etc/haproxy/haproxy.cfg
 /home/opsuser/apps/kafka2cassandra
+/home/opsuser/apps/belmullet2tcp.sh
