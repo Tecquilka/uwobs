@@ -75,7 +75,7 @@ while True:
     except socket.error, e:
         err = e.args[0]
         if err == errno.EAGAIN or err == errno.EWOULDBLOCK:
-            if f and nodata:
+            if f and nodata and next_filename() != filename:
                f.close()
                f = None
                os.rename(filename+'.tmp',filename)
@@ -90,7 +90,7 @@ while True:
                        print >> sys.stderr, 'problem writing to kafka: %s' % e
 
             nodata = True
-            sleep(1)
+            sleep(0.01)
             continue
         else:
             # a "real" error occurred
