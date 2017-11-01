@@ -113,7 +113,7 @@
 				"4": 1
 			},
 			"col": {
-				"3": 1,
+				"3": 2,
 				"4": 1
 			},
 			"col_width": 1,
@@ -121,7 +121,7 @@
 				{
 					"type": "tideGaugeIndicator",
 					"settings": {
-						"station_id": "Aranmore",
+						"station_id": "Aranmore Island - Leabgarrow",
 						"warn_minutes": "60",
 						"error_minutes": "120"
 					}
@@ -129,7 +129,7 @@
 				{
 					"type": "tideGaugeIndicator",
 					"settings": {
-						"station_id": "Ballycotton",
+						"station_id": "Ballycotton Harbour",
 						"warn_minutes": "60",
 						"error_minutes": "120"
 					}
@@ -137,7 +137,15 @@
 				{
 					"type": "tideGaugeIndicator",
 					"settings": {
-						"station_id": "Castletownbere",
+						"station_id": "Ballyglass Harbour",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Castletownbere Port",
 						"warn_minutes": "60",
 						"error_minutes": "120"
 					}
@@ -153,7 +161,7 @@
 				{
 					"type": "tideGaugeIndicator",
 					"settings": {
-						"station_id": "Dunmore",
+						"station_id": "Dunmore East Harbour",
 						"warn_minutes": "60",
 						"error_minutes": "120"
 					}
@@ -177,6 +185,14 @@
 				{
 					"type": "tideGaugeIndicator",
 					"settings": {
+						"station_id": "Howth Harbour 2",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
 						"station_id": "Killybegs Port",
 						"warn_minutes": "60",
 						"error_minutes": "120"
@@ -185,7 +201,7 @@
 				{
 					"type": "tideGaugeIndicator",
 					"settings": {
-						"station_id": "Malin Head",
+						"station_id": "Kilrush Lough",
 						"warn_minutes": "60",
 						"error_minutes": "120"
 					}
@@ -193,7 +209,23 @@
 				{
 					"type": "tideGaugeIndicator",
 					"settings": {
-						"station_id": "Skerries Harbour",
+						"station_id": "Malin Head - Portmore Pier",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Roonagh Pier",
+						"warn_minutes": "60",
+						"error_minutes": "120"
+					}
+				},
+				{
+					"type": "tideGaugeIndicator",
+					"settings": {
+						"station_id": "Sligo",
 						"warn_minutes": "60",
 						"error_minutes": "120"
 					}

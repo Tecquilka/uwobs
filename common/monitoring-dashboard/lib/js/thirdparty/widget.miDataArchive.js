@@ -1,3 +1,11 @@
+String.prototype.format = String.prototype.format || function(args) {
+    return this.replace(/{([^}]+)}/g, function(match, v) { 
+      return typeof args[v] != 'undefined'
+        ? args[v]
+        : match
+      ;
+    });
+};
 (function()
 {
 	//Our RAG indicator styles
@@ -13,13 +21,15 @@
         var stateElement = $('<div class="midas-text"></div>');
         var indicatorElement = $('<div class="midas-light"></div>');
         var currentSettings = settings;
+        var default_filename_format = "{device}_{date}_{time}{extension}";
 		
 		//store our calculated values in an object
 		var stateObject = {"fails": 0};
 		
 		//array of our values: 0=Green, 2=Amber, 3=Red
 		var stateArray = ["green", "amber", "red"];
-                function getPossibleUrls(dtype,device,ext,quantity){
+                function getPossibleUrls(filename_format,dtype,device,ext,quantity){
+                   filename_format = filename_format || default_filename_format;
                    var urls = [];
                    for(var i=quantity; i>0; i--){
                       var base = "http://spiddal.marine.ie/data/";
@@ -29,7 +39,16 @@
                       var day = ("0"+d.getUTCDate()).slice(-2);
                       var hour = ("0"+d.getUTCHours()).slice(-2);
                       var minute = ("0"+d.getUTCMinutes()).slice(-2);
-                      var filename = device+"_"+year+month+day+"_"+hour+minute+ext;
+                      var filename = filename_format.format({
+                                device: device,
+                                extension: ext,
+                                date: year+month+day,
+                                time: hour+minute,
+                                year: year,
+                                month: month,
+                                day: day,
+                                hour: hour,
+                                minute: minute});
                       var folder_url = base+dtype+"/"+device+"/"+year+"/"+month+"/"+day+"/";
                       var url = folder_url+filename;
                       urls.push(url);
@@ -50,7 +69,8 @@
                              stateObject.value=0;
                             _updateState();
                           }
-                      }).fail(function(){
+                      }).fail(function(jqXHR, textStatus, errorThrown){
+                             //console.log(url,textStatus);
                              return verifyOneUrl(device,urls,url);
                       });
                    }else{
@@ -65,9 +85,10 @@
                         var dtype = currentSettings.device_type;
                         var device = currentSettings.device;
                         var ext = currentSettings.ext;
+                        var format = currentSettings.format;
                         var quantity = parseInt(currentSettings.within_minutes);
                         quantity = quantity? quantity: 5;
-                        var urls = getPossibleUrls(dtype,device,ext,quantity);
+                        var urls = getPossibleUrls(format,dtype,device,ext,quantity);
                         verifyOneUrl(device,urls);
                 }
                 function _updateState() {
@@ -138,6 +159,12 @@
             {
                 name: "ext",
                 display_name: "File Extension",
+                type: "text"
+            },
+            {
+                name: "format",
+                display_name: "Filename Format",
+                default_value:  "{device}_{date}_{time}{extension}",
                 type: "text"
             },
             {

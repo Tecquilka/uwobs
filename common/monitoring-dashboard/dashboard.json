@@ -7,11 +7,13 @@
 			"title": "Current Data Archives",
 			"width": 1,
 			"row": {
+				"1": 1,
 				"2": 1,
 				"3": 1,
 				"4": 1
 			},
 			"col": {
+				"1": 1,
 				"2": 2,
 				"3": 2,
 				"4": 2
@@ -56,7 +58,28 @@
 					"settings": {
 						"device_type": "hydrophones",
 						"device": "SBF1622",
-						"ext": "00.txt"
+						"ext": "00.txt",
+						"format": "{device}_{date}_{time}{extension}",
+						"within_minutes": "8"
+					}
+				},
+				{
+					"type": "midasIndicator",
+					"settings": {
+						"device_type": "video",
+						"device": "aja-helo-1H000314",
+						"ext": ".mp4",
+						"format": "{device}_{year}-{month}-{day}_{time}{extension}",
+						"within_minutes": "8"
+					}
+				},
+				{
+					"type": "micchIndicator",
+					"settings": {
+						"title": "audio/ICListenRecordings",
+						"url": "http://spiddal.marine.ie/data/audio/ICListenRecordings/{year}/{month}/{day}/",
+						"link": "http://spiddal.marine.ie/data/audio/ICListenRecordings/{year}/{month}/{day}/",
+						"within_seconds": "300"
 					}
 				}
 			]
@@ -65,11 +88,13 @@
 			"title": "Cassandra Servers",
 			"width": 1,
 			"row": {
-				"2": 11,
+				"1": 13,
+				"2": 5,
 				"3": 1,
 				"4": 1
 			},
 			"col": {
+				"1": 1,
 				"2": 1,
 				"3": 3,
 				"4": 4
@@ -112,11 +137,13 @@
 			"title": "spiddal data collectors",
 			"width": 1,
 			"row": {
-				"2": 35,
+				"1": 79,
+				"2": 45,
 				"3": 1,
 				"4": 5
 			},
 			"col": {
+				"1": 1,
 				"2": 1,
 				"3": 1,
 				"4": 1
@@ -174,11 +201,13 @@
 			"title": "spiddal.marine.ie website",
 			"width": 1,
 			"row": {
-				"2": 19,
+				"1": 25,
+				"2": 1,
 				"3": 13,
 				"4": 1
 			},
 			"col": {
+				"1": 1,
 				"2": 1,
 				"3": 1,
 				"4": 1
@@ -196,14 +225,53 @@
 			]
 		},
 		{
+			"title": "Kakfa Servers",
+			"width": 1,
+			"row": {
+				"1": 41,
+				"2": 15,
+				"3": 13,
+				"4": 1
+			},
+			"col": {
+				"1": 1,
+				"2": 2,
+				"3": 3,
+				"4": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka01"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka02"
+					}
+				},
+				{
+					"type": "mipcpIndicator",
+					"settings": {
+						"hostname": "kafka03"
+					}
+				}
+			]
+		},
+		{
 			"title": "Processing Servers",
 			"width": 1,
 			"row": {
+				"1": 29,
 				"2": 23,
-				"3": 13,
+				"3": 17,
 				"4": 9
 			},
 			"col": {
+				"1": 1,
 				"2": 1,
 				"3": 2,
 				"4": 4
@@ -243,49 +311,16 @@
 			]
 		},
 		{
-			"title": "Kakfa Servers",
-			"width": 1,
-			"row": {
-				"2": 13,
-				"3": 13,
-				"4": 1
-			},
-			"col": {
-				"2": 2,
-				"3": 3,
-				"4": 3
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka01"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka02"
-					}
-				},
-				{
-					"type": "mipcpIndicator",
-					"settings": {
-						"hostname": "kafka03"
-					}
-				}
-			]
-		},
-		{
 			"title": "Monthly Compress Archives",
 			"width": 1,
 			"row": {
+				"1": 49,
 				"2": 29,
 				"3": 17,
 				"4": 13
 			},
 			"col": {
+				"1": 1,
 				"2": 2,
 				"3": 1,
 				"4": 2
@@ -333,11 +368,13 @@
 			"title": "MQTT",
 			"width": 1,
 			"row": {
-				"2": 1,
+				"1": 61,
+				"2": 35,
 				"3": 21,
 				"4": 17
 			},
 			"col": {
+				"1": 1,
 				"2": 1,
 				"3": 3,
 				"4": 3
@@ -394,11 +431,13 @@
 			"title": "Primary Servers",
 			"width": 1,
 			"row": {
-				"2": 21,
-				"3": 25,
+				"1": 71,
+				"2": 41,
+				"3": 29,
 				"4": 9
 			},
 			"col": {
+				"1": 1,
 				"2": 2,
 				"3": 2,
 				"4": 3
@@ -429,12 +468,14 @@
 			"title": "Applications",
 			"width": 1,
 			"row": {
-				"2": 45,
+				"1": 91,
+				"2": 49,
 				"3": 31,
 				"4": 15
 			},
 			"col": {
-				"2": 1,
+				"1": 1,
+				"2": 2,
 				"3": 1,
 				"4": 1
 			},

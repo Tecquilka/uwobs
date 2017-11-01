@@ -1,3 +1,11 @@
+String.prototype.format = String.prototype.format || function(args) {
+    return this.replace(/{([^}]+)}/g, function(match, v) { 
+      return typeof args[v] != 'undefined'
+        ? args[v]
+        : match
+      ;
+    });
+};
 (function()
 {
 	//Our RAG indicator styles
@@ -19,10 +27,25 @@
 		
 		//array of our values: 0=Green, 2=Amber, 3=Red
 		var stateArray = ["green", "amber", "red"];
-        
+                function formatString(s){
+                      var d = new Date();
+                      var year = d.getUTCFullYear();
+                      var month = ("0"+(d.getUTCMonth()+1)).slice(-2);
+                      var day = ("0"+d.getUTCDate()).slice(-2);
+                      var hour = ("0"+d.getUTCHours()).slice(-2);
+                      var minute = ("0"+d.getUTCMinutes()).slice(-2);
+                      return s.format({
+                                date: year+month+day,
+                                time: hour+minute,
+                                year: year,
+                                month: month,
+                                day: day,
+                                hour: hour,
+                                minute: minute});
+                } 
 		function updateState() {        
                       $.ajax({
-                          url : currentSettings.url,
+                          url : formatString(currentSettings.url),
                           dataType: 'text',
                            success : function(data){
                              if( data == stateObject.data){
@@ -53,7 +76,7 @@
 			
 			indicatorElement.addClass(stateArray[stateObject.value]);
                         var link = '<a target="_blank'
-                                  +'" href="'+currentSettings.link
+                                  +'" href="'+formatString(currentSettings.link)
                                   +'">'+stateObject.status+'</a>';
 			stateElement.html(link);
 		
@@ -88,7 +111,8 @@
            if(refreshTimer){
               clearInterval(refreshTimer);
            }
-           refreshTimer = setInterval(function(){updateState();},15000);
+           var timeout = parseInt(currentSettings.within_seconds||"30")*500;
+           refreshTimer = setInterval(function(){updateState();},timeout);
         };
         createRefreshTimer();
     };
@@ -110,6 +134,12 @@
             {
                 name: "link",
                 display_name: "Link To",
+                type: "text"
+            },
+            {
+                name: "within_seconds",
+                display_name: "Updated Within Seconds",
+                default_value: "30",
                 type: "text"
             }
         ],
