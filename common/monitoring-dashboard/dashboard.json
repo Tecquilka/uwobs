@@ -190,7 +190,7 @@
 					"type": "midasApplicationIndicator",
 					"settings": {
 						"application_name": "icListen Audio",
-						"url": "http://audio.gconode01.dm.marine.ie/",
+						"url": "http://audio.spidvid.dm.marine.ie/",
 						"warning_timeout": "30",
 						"error_timeout": "300"
 					}
