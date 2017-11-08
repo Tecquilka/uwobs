@@ -17,7 +17,7 @@ done
 
 SERVER=172.16.255.254
 HTTP_PORT=8196
-COLLECT_WAV=$HOME/icListen/collect_audio.py
+COLLECT_WAV=$HOME/dev/uwobs/common/apps/catserial/collect_audio.py
 
 
 $COLLECT_WAV --server "$SERVER" --http-port $HTTP_PORT
