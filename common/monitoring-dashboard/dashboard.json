@@ -484,24 +484,6 @@
 				{
 					"type": "midasApplicationIndicator",
 					"settings": {
-						"application_name": "ctd2cassandra",
-						"url": "http://ctd2cassandra.dm.marine.ie",
-						"warning_timeout": "60",
-						"error_timeout": "300"
-					}
-				},
-				{
-					"type": "midasApplicationIndicator",
-					"settings": {
-						"application_name": "fluorometer2cassandra",
-						"url": "http://fluorometer2cassandra.dm.marine.ie",
-						"warning_timeout": "60",
-						"error_timeout": "300"
-					}
-				},
-				{
-					"type": "midasApplicationIndicator",
-					"settings": {
 						"application_name": "ysi2cassandra",
 						"url": "http://ysi2cassandra.dm.marine.ie",
 						"warning_timeout": "1800",
