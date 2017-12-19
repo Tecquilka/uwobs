@@ -1,2 +1,2 @@
 * * * * * /home/gcouser/bin/collect_hydrophone.sh >> /home/gcouser/logs/hydrophone.log 2>&1
-* * * * * sleep 30 && /home/gcouser/bin/collect_hydrophone.sh >> /home/gcouser/logs/hydrophone.log 2>&1
+* * * * * /home/gcouser/dev/uwobs/common/apps/collectors/interrupt_adcp_if_file_present.sh >> /dev/null 2>&1
