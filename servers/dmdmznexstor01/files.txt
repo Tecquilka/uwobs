@@ -13,3 +13,4 @@
 /home/opsuser/bin/rsync-audio.sh
 /home/opsuser/bin/rsync-video-photo.sh
 /home/opsuser/cron.tab
+/etc/nginx/sites-available/default
