@@ -1,4 +1,5 @@
-audio 172.17.1.16:/volume1/audio
+audio 172.17.1.16:/volume2/audio
 video 172.17.1.16:/volume1/video
 photo 172.17.1.16:/volume1/photo
 dtest 172.17.1.16:/volume1/dtest
+acousticbuoy 172.17.1.16:/volume2/acousticbuoy
