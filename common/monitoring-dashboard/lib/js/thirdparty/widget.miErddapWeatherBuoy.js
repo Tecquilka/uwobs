@@ -31,8 +31,8 @@
                       var url = urls.shift();
                       $.ajax({
                            url : url,
-                           dataType:"jsonp",
-                           jsonp:".jsonp",
+                           //dataType:"jsonp",
+                           //jsonp:".jsonp",
                            cache: true,
                            success : function(data){
                              if(data.table.rows.length == 0){
