@@ -534,6 +534,15 @@
 						"warning_timeout": "60",
 						"error_timeout": "300"
 					}
+				},
+				{
+					"type": "midasApplicationIndicator",
+					"settings": {
+						"application_name": "AIS Rinville Archiving",
+						"url": "http://ais2file.dm.marine.ie",
+						"warning_timeout": "60",
+						"error_timeout": "300"
+					}
 				}
 			]
 		}
