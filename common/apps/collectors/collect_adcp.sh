@@ -25,9 +25,10 @@ COLLECT_ADCP=$(dirname $0)/../catserial/collect_adcp.py
 $PYTHON $COLLECT_ADCP --server "$SERVER" --port "$PORT" --source "$SOURCE" --http-port $HTTP_PORT
 
 status=$?
-while [ $SECONDS -lt 31 ]; do
+while [ $SECONDS -lt 26 ]; do
     echo -n . >&2
     sleep 1
 done
+sleep 5
 echo "done" $(date) >&2
 exit $status
