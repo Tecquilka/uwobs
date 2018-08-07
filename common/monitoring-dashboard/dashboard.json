@@ -24,7 +24,7 @@
 					"type": "midasIndicator",
 					"settings": {
 						"device_type": "fluorometers",
-						"device": "WL-ECO-FLNTU-4476",
+						"device": "WL-ECO-FLNTU-3137",
 						"ext": ".txt"
 					}
 				},
@@ -40,7 +40,7 @@
 					"type": "midasIndicator",
 					"settings": {
 						"device_type": "adcps",
-						"device": "TRDI-WHB600Hz-1323",
+						"device": "TRDI-WHB600Hz-10488",
 						"ext": ".pd0",
 						"within_minutes": "20"
 					}
@@ -57,7 +57,7 @@
 					"type": "midasIndicator",
 					"settings": {
 						"device_type": "hydrophones",
-						"device": "SBF1622",
+						"device": "SBF1323",
 						"ext": "00.txt",
 						"format": "{device}_{date}_{time}{extension}",
 						"within_minutes": "8"
@@ -359,7 +359,7 @@
 					"type": "midasmcIndicator",
 					"settings": {
 						"device_type": "hydrophones",
-						"device": "SBF1622"
+						"device": "SBF1323"
 					}
 				}
 			]
