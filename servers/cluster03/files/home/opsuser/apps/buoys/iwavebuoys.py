@@ -1,9 +1,9 @@
 import requests
 import json
 
-proxies = { "http": "http://10.0.5.55:80" }
+#proxies = { "http": "http://10.0.5.55:80" }
 url = "http://erddap.marine.ie/erddap/tabledap/IWaveBNetwork30Min.json?longitude,latitude,time,station_id,PeakPeriod,PeakDirection,UpcrossPeriod,SignificantWaveHeight,SeaTemperature,Hmax,THmax,MeanCurDirTo,MeanCurSpeed,SignificantWaveHeight_qc,PeakPeriod_qc&time%3E=now-8hours"
-r = requests.get(url,proxies=proxies)
+r = requests.get(url) #,proxies=proxies)
 d = r.json()
 data = {}
 station_id = -1
