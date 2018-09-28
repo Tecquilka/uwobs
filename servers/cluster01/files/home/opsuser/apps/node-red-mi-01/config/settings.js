@@ -209,7 +209,8 @@ module.exports = {
 
     functionGlobalContext: {
         fs:require('fs'),
-        mailparser:require('mailparser')
+        mailparser:require('mailparser'),
+        csvparser:require('csv-parse')
         // os:require('os'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})
