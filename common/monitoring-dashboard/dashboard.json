@@ -274,7 +274,7 @@
 				"1": 1,
 				"2": 1,
 				"3": 2,
-				"4": 4
+				"4": 3
 			},
 			"col_width": 1,
 			"widgets": [
@@ -323,7 +323,7 @@
 				"1": 1,
 				"2": 2,
 				"3": 1,
-				"4": 2
+				"4": 4
 			},
 			"col_width": 1,
 			"widgets": [
@@ -331,7 +331,7 @@
 					"type": "midasmcIndicator",
 					"settings": {
 						"device_type": "fluorometers",
-						"device": "WL-ECO-FLNTU-4476"
+						"device": "WL-ECO-FLNTU-3137"
 					}
 				},
 				{
@@ -345,7 +345,7 @@
 					"type": "midasmcIndicator",
 					"settings": {
 						"device_type": "adcps",
-						"device": "TRDI-WHB600Hz-1323"
+						"device": "TRDI-WHB600Hz-10488"
 					}
 				},
 				{
@@ -377,7 +377,7 @@
 				"1": 1,
 				"2": 1,
 				"3": 3,
-				"4": 3
+				"4": 1
 			},
 			"col_width": 1,
 			"widgets": [
@@ -424,6 +424,17 @@
 						"error_seconds": 1800,
 						"link": "http://mqtt.dm.marine.ie"
 					}
+				},
+				{
+					"type": "mimqttIndicator",
+					"settings": {
+						"title": "Wave Buoys",
+						"url": "http://mqtt.marine.ie",
+						"topic": "irish-wave-buoys",
+						"warn_seconds": 120,
+						"error_seconds": 600,
+						"link": "http://mqtt.marine.ie"
+					}
 				}
 			]
 		},
@@ -434,13 +445,13 @@
 				"1": 71,
 				"2": 41,
 				"3": 29,
-				"4": 9
+				"4": 17
 			},
 			"col": {
 				"1": 1,
 				"2": 2,
 				"3": 2,
-				"4": 3
+				"4": 2
 			},
 			"col_width": 1,
 			"widgets": [
@@ -471,13 +482,13 @@
 				"1": 91,
 				"2": 49,
 				"3": 31,
-				"4": 15
+				"4": 21
 			},
 			"col": {
 				"1": 1,
 				"2": 2,
 				"3": 1,
-				"4": 1
+				"4": 3
 			},
 			"col_width": 1,
 			"widgets": [

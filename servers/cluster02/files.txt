@@ -12,3 +12,4 @@
 /etc/haproxy/haproxy.cfg
 /etc/supervisor/conf.d/
 /etc/kplex.conf
+/home/opsuser/apps/compass

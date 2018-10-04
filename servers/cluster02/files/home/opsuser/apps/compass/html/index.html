@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Compass data from ERDDAP</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="js/erddap.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+   <h3>Compass Buoy Data <small class="text-muted" id="datasourceid"></small></h3>
+   <h4 id='period'></h4>
+      <div id='airmar-windspeed'></div>
+      <div id='airmar-pressure'></div>
+      <div id='sbe-temp-salinity'></div>
+      <div id='seafet'></div>
+      <div id='contros'></div>
+   <div class="row">
+   </div>
+   <div class="row">
+   </div>
+   <div class="row">
+   </div>
+  </div>
+<script>
+var erddap = new ERDDAP('http://10.11.1.82/erddap');
+var ds = erddap.dataset('compass_buoy');
+function showCharts(datasourceid,period){
+  document.getElementById("datasourceid").innerText = datasourceid;
+  document.getElementById("period").innerText = 'Last '+period+' met data';
+  var vars = [
+        "time",
+        // 1. Airmar
+        "airmar_wind_gust_max",
+        "airmar_wind_speed_avg",
+        "airmar_atmospheric_pressure_avg",
+        "avrg_wind_direction_wvc",
+        // 2. Contros
+        "contros_pco2_avg",
+        "contros_voltage_avg",
+        // 3. SBE
+        "sbe_conductivity_avg",
+        "sbe_pressure_avg",
+        "sbe_salinity_avg",
+        "sbe_temp_avg",
+        // 4. Seafet
+        "seafet_ph_ext_avg",
+        "seafet_ph_int_avg",
+        "seafet_temp_avg",
+        // 5. Suna
+        "suna_absorbance_254nm_avg",
+        "suna_absorbance_350nm_avg", 
+        "suna_int_humidity_avg",
+        "suna_int_temp_avg", 
+        "suna_nitrate_conc_avg",
+        "suna_nitrogen_avg",
+        "suna_spectrum_avrg_avg"
+  ];
+  ds.constrain({since: period+" ago", datasourceid: datasourceid}).variables(vars.join(",")).generateUrl(".jsonlCSV").then(function(url){
+   fetch(url)
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(text){
+       var lines = text.split("\n");
+       var data = [];
+       lines.forEach(function(line){
+          if(!line.trim().length) return;
+          var a = JSON.parse(line);
+          var o = {};
+          for(var i=0;i<vars.length;i++){
+            o[vars[i]] = a[i];
+          }
+          data.push(o);
+       });
+       return data;
+   }).then(function(data){
+      showAirmarWindSpeedChart(data);
+      showAirmarPressureChart(data);
+      showSbeTemperatureSalinityChart(data);
+      showSeafetChart(data);
+      showControsChart(data);
+   });
+  });
+
+  var showAirmarWindSpeedChart = function(erddap_data){
+    var el = "airmar-windspeed";
+    document.getElementById(el).innerHTML='';
+    var trace1 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.airmar_wind_speed_avg;}),
+    name: 'Wind Speed (avg)',
+      mode: 'lines'
+    };
+    
+    var trace2 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.airmar_wind_gust_max;}),
+      name: 'Wind Gust(max)',
+      mode: 'lines'
+    };
+
+    var trace3 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.avrg_wind_direction_wvc}),
+      name: 'Direction',
+      yaxis: 'y2',
+      mode: 'markers',
+      marker: {
+         size: 3,
+      }
+    };
+  
+  
+    var data = [trace1, trace2, trace3];
+  
+    var layout = {
+      title: 'Windspeed and Direction',
+      yaxis: {title: 'Wind'},
+      yaxis2: {
+        title: 'Direction',
+        titlefont: {color: 'blue'},
+        tickfont: {color: 'red'},
+        overlaying: 'y',
+        side: 'right'
+      }
+    };
+  
+    var chart = Plotly.newPlot(el, data, layout);
+  }
+
+  var showAirmarPressureChart = function(erddap_data){
+    var el = "airmar-pressure";
+    document.getElementById(el).innerHTML='';
+    var trace1 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.airmar_atmospheric_pressure_avg;}),
+    name: 'Atmospheric Pressure (avg)',
+      mode: 'lines'
+    };
+    
+    var data = [trace1];
+  
+    var layout = {
+      title: 'Pressure',
+      yaxis: {title: 'Pressure (mb)', range: [960,1070]},
+    };
+  
+    var chart = Plotly.newPlot(el, data, layout);
+  }
+
+  var showSbeTemperatureSalinityChart = function(erddap_data){
+    var el = "sbe-temp-salinity";
+    document.getElementById(el).innerHTML='';
+    var trace1 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.sbe_temp_avg;}),
+    name: 'SST (C)',
+      mode: 'lines'
+    };
+    
+    var trace2 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.sbe_salinity_avg;}),
+      name: 'Salinity (PSU)',
+      mode: 'lines',
+      line: {color: 'green'},
+      yaxis: 'y2'
+    };
+
+    var data = [trace1, trace2];
+  
+    var layout = {
+      title: 'Temperature and Salinity',
+      yaxis: {title: 'SST (C)'},
+      yaxis2: {
+        title: 'Salinity (PSU)',
+        titlefont: {color: 'green'},
+        tickfont: {color: 'green'},
+        overlaying: 'y',
+        side: 'right'
+      }
+    };
+  
+    var chart = Plotly.newPlot(el, data, layout);
+  }
+
+  var showSeafetChart = function(erddap_data){
+    var el = "seafet";
+    document.getElementById(el).innerHTML='';
+    var trace1 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.seafet_ph_ext_avg;}),
+    name: 'pH ext',
+      mode: 'lines'
+    };
+    
+    var trace2 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.seafet_ph_int_avg;}),
+      name: 'pH int',
+      mode: 'lines'
+    };
+
+    var trace3 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.seafet_temp_avg;}),
+      name: 'Temperature',
+      yaxis: 'y2',
+      mode: 'lines'
+    };
+  
+  
+    var data = [trace1, trace2, trace3];
+  
+    var layout = {
+      title: 'Ocean Acidity',
+      yaxis: {title: 'pH'},
+      yaxis2: {
+        title: 'Temperature (C)',
+        titlefont: {color: 'green'},
+        tickfont: {color: 'green'},
+        overlaying: 'y',
+        side: 'right'
+      }
+    };
+  
+    var chart = Plotly.newPlot(el, data, layout);
+  }
+
+  var showControsChart = function(erddap_data){
+    var el = "contros";
+    document.getElementById(el).innerHTML='';
+    var trace1 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.contros_pco2_avg;}),
+    name: 'pco2',
+      mode: 'lines'
+    };
+    
+    var trace2 = {
+      x: erddap_data.map(function(e){return e.time;}),
+      y: erddap_data.map(function(e){return e.contros_voltage_avg;}),
+      name: 'Voltage',
+      yaxis: 'y2',
+      mode: 'lines'
+    };
+
+    var data = [trace1, trace2];
+  
+    var layout = {
+      title: 'Contros',
+      yaxis: {title: 'pco2'},
+      yaxis2: {
+        title: 'Voltage',
+        titlefont: {color: 'green'},
+        tickfont: {color: 'green'},
+        overlaying: 'y',
+        side: 'right'
+      }
+    };
+  
+    var chart = Plotly.newPlot(el, data, layout);
+  }
+
+}
+showCharts("Compass-CR6-6506", "7 days");
+</script>
+</body>
+</html>
+
