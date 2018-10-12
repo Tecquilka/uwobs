@@ -10,7 +10,7 @@
 				"1": 1,
 				"2": 1,
 				"3": 1,
-				"4": 1
+				"4": 9
 			},
 			"col": {
 				"1": 1,
@@ -445,7 +445,7 @@
 				"1": 71,
 				"2": 41,
 				"3": 29,
-				"4": 17
+				"4": 25
 			},
 			"col": {
 				"1": 1,
@@ -553,6 +553,46 @@
 						"url": "http://ais2file.dm.marine.ie",
 						"warning_timeout": "60",
 						"error_timeout": "300"
+					}
+				}
+			]
+		},
+		{
+			"title": "ERDDAP",
+			"width": 1,
+			"row": {
+				"4": 1
+			},
+			"col": {
+				"4": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "micchIndicator",
+					"settings": {
+						"title": "Fluorometer",
+						"url": "https://erddap.marine.ie/erddap/tabledap/galway_obs_fluorometer.jsonlCSV?time&time%3Enow-15minutes&orderByMax(%22time%22)",
+						"link": "https://erddap.marine.ie/erddap/tabledap/galway_obs_fluorometer.html",
+						"within_seconds": "120"
+					}
+				},
+				{
+					"type": "micchIndicator",
+					"settings": {
+						"title": "CTD",
+						"url": "https://erddap.marine.ie/erddap/tabledap/spiddal_obs_ctd.jsonlCSV?time&time%3Enow-15minutes&orderByMax(%22time%22)",
+						"link": "https://erddap.marine.ie/erddap/tabledap/spiddal_obs_ctd.htm",
+						"within_seconds": "120"
+					}
+				},
+				{
+					"type": "micchIndicator",
+					"settings": {
+						"title": "ADCP",
+						"url": "https://erddap.marine.ie/erddap/tabledap/spiddal_obs_adcp.jsonlCSV?time&time%3Enow-15minutes&orderByMax(%22time%22)",
+						"link": "https://erddap.marine.ie/erddap/tabledap/spiddal_obs_adcp.html",
+						"within_seconds": "120"
 					}
 				}
 			]
