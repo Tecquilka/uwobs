@@ -1,2 +1,0 @@
-*/5 * * * * flock -n /tmp/collect_ysi.lock -c "/home/opsuser/apps/mestech/collect_ysi002a.sh"
-*/1 * * * * /usr/bin/python /home/opsuser/apps/buoys/iwavebuoys.py | /usr/local/bin/kafkacat -P -b kafka01,kafka02,kafka03 -p 0 -t irish-wave-buoys 2>/dev/null
