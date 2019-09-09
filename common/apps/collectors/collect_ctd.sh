@@ -15,11 +15,10 @@ do
 done
 
 
+CONFIG=$(dirname $0)/configure_ctd.py
+export $($CONFIG | grep -v '^#' | xargs)
 TYPE=ctd
-DEVICE=I-OCEAN7-304-1214551
-PORT=950 # was 953
 DATA_DIR=$HOME/$TYPE
-SERVER=172.16.255.5
 ARCHIVER=$(dirname $0)/archive_file.sh
 HTTP_PORT=8082
 KAFKA_SERVER=localhost

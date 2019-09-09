@@ -16,7 +16,8 @@ done
 
 SOURCE=TRDI-WHB600Hz-10488
 PORT=952
-SERVER=172.16.255.8
+#PORT=951
+SERVER=172.16.255.5
 HTTP_PORT=8085
 PYTHON=$HOME/virtualenv/serial2kafka/bin/python
 COLLECT_ADCP=$(dirname $0)/../catserial/collect_adcp.py
