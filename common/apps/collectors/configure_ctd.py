@@ -6,8 +6,8 @@ csv = 'https://raw.githubusercontent.com/IrishMarineInstitute/uwobs/master/commo
 query = '''
 SELECT * FROM csv
          WHERE reference='ctd0'
-         AND start_date<date('now')
-         AND end_date is null OR end_date > date('now')
+         AND start_date<=datetime('now')
+         AND end_date is null OR end_date >= datetime('now')
          ORDER BY start_date DESC LIMIT 1
          '''
 answer = select_one_from_csv(csv,query)

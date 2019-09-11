@@ -15,6 +15,7 @@ parser.add_argument('--device', required=True, help='Url of the device, eg: rfc2
 parser.add_argument('--source', required=True, help='Name or id of the source to be included in the output')
 parser.add_argument('--baud', type=int, default=9600, help='The baud rate')
 parser.add_argument('--separator', default="|", help='The separator')
+parser.add_argument('--appending', default="", help='Anything to be appended to the data lines, including a separator if one is required.')
 parser.add_argument('--timeout', type=int, default=300, help='Number of seconds to wait for messages before giving up, default=300 (5 minutes)')
 parser.add_argument('--http-port', type=int, default=8082, help='HTTP web server port showing latest message, default is 8082')
 args = parser.parse_args()
@@ -40,7 +41,7 @@ while 1:
     line = ser.readline().rstrip()
     if line:
       timestamp = datetime.datetime.utcnow().isoformat()[:-3]+"Z"
-      output = u"{1}{0}{2}{0}{3}".format(args.separator,timestamp,args.source,line)
+      output = u"{1}{0}{2}{0}{3}{4}".format(args.separator,timestamp,args.source,line,args.appending)
       print output
       sys.stdout.flush()
       killer.ping()
