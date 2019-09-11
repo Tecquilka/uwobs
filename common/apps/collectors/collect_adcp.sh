@@ -14,10 +14,8 @@ do
    sleep 10
 done
 
-SOURCE=TRDI-WHB600Hz-10488
-PORT=952
-#PORT=951
-SERVER=172.16.255.5
+CONFIG=$(dirname $0)/configure_adcp.py
+export $($CONFIG | grep -v '^#' | xargs)
 HTTP_PORT=8085
 PYTHON=$HOME/virtualenv/serial2kafka/bin/python
 COLLECT_ADCP=$(dirname $0)/../catserial/collect_adcp.py

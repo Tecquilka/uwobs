@@ -1,0 +1,2 @@
+reference,type,manufacturer,id,moxa_server,moxa_port,start_date,end_date
+adcp0,adcp,teledyne,TRDI-WHB600Hz-10488,172.16.255.5,952,2019-09-11,
