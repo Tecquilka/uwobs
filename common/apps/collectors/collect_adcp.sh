@@ -21,7 +21,7 @@ PYTHON=$HOME/virtualenv/serial2kafka/bin/python
 COLLECT_ADCP=$(dirname $0)/../catserial/collect_adcp.py
 
 
-$PYTHON $COLLECT_ADCP --server "$SERVER" --port "$PORT" --source "$SOURCE" --http-port $HTTP_PORT
+$PYTHON $COLLECT_ADCP --server "$SERVER" --port "$PORT" --source "$DEVICE" --http-port $HTTP_PORT
 
 status=$?
 while [ $SECONDS -lt 26 ]; do
