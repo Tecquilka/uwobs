@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import json
 
 from csv_select import select_one_from_csv
 
@@ -16,13 +17,17 @@ print('# {}'.format(answer))
 # prints this:
 # {'end_date': None, 'type': 'fluorometer', 'moxa_port': 951, 'chl_dark_counts': 48, 'ntu_scale_factor': 0.0529, 'chl_scale_factor': 0.0178, 'reference': 'fluorometer0', 'moxa_server': '172.16.255.5', 'ntu_dark_counts': 41, 'id': 'WL_ECO_FLNTU-4476', 'manufacturer': 'seabird', 'start_date': '2019-09-11T00:00:00Z'}
 #
+FLUOROMETER_CONFIG = '{}|{}|{}|{}'.format( 
+               answer['chl_scale_factor'],
+              answer['chl_dark_counts'],
+              answer['ntu_scale_factor'],
+              answer['ntu_dark_counts']
+         )
 print ('''DEVICE={}
 PORT={}
 SERVER={}
-FLUOROMETER_JSON_CONFIG='{{"chl":{{"scale_factor":{},"dark_counts":{}}},"ntu":{{"scale_factor":{},"dark_counts":{}}}}}'
+FLUOROMETER_CONFIG='{}'
 '''.format(
-    answer['id'],answer['moxa_port'],answer['moxa_server'],
-    answer['chl_scale_factor'],answer['chl_dark_counts'],
-    answer['ntu_scale_factor'],answer['ntu_dark_counts']
+    answer['id'],answer['moxa_port'],answer['moxa_server'],FLUOROMETER_CONFIG
 ));
 

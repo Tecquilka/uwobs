@@ -29,7 +29,7 @@ CATSERIAL=$(dirname $0)/../catserial/catserial.py
 mkdir -p $DATA_DIR || exit 1
 mkdir -p $DATA_DIR/Data || exit 1
 
-$PYTHON $CATSERIAL --device "socket://$SERVER:$PORT" --source "$DEVICE" --http-port $HTTP_PORT --appending "|$FLUOROMETER_JSON_CONFIG" \
+$PYTHON $CATSERIAL --device "socket://$SERVER:$PORT" --source "$DEVICE" --http-port $HTTP_PORT --appending "|$FLUOROMETER_CONFIG" \
                    | tee >( kafkacat -P -b "$KAFKA_SERVER" -t "$KAFKA_TOPIC" -p 0 ) \
                    | rotatelogs -p $ARCHIVER "$DATA_DIR/${DEVICE}_%Y%m%d_%H%M.txt" 60
 

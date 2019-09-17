@@ -15,7 +15,8 @@ do
    sleep 10
 done
 
-SERVER=172.16.255.254
+CONFIG=$(dirname $0)/configure_hydrophone.py
+export $($CONFIG | grep -v '^#' | xargs)
 HTTP_PORT=8196
 COLLECT_WAV=$HOME/dev/uwobs/common/apps/catserial/collect_audio.py
 

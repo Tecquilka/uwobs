@@ -7,9 +7,10 @@
 ################################################################## 
 
 
+CONFIG=$(dirname $0)/configure_hydrophone.py
+export $($CONFIG | grep -v '^#' | xargs)
 TYPE=hydrophone
 DATA_DIR=/home/gcouser/$TYPE/
-SERVER=172.16.255.254
 REMOTE_USER=icListen
 REMOTE_FOLDER=Data
 REMOTE_LOCATION="${REMOTE_USER}@${SERVER}:${REMOTE_FOLDER}"
