@@ -16,7 +16,7 @@ do
 done
 
 CONFIG=$(dirname $0)/configure_hydrophone.py
-export $($CONFIG | grep -v '^#' | xargs)
+export $( https_proxy=http://172.16.255.226:3128 $CONFIG | grep -v '^#' | xargs)
 HTTP_PORT=8196
 COLLECT_WAV=$HOME/dev/uwobs/common/apps/catserial/collect_audio.py
 
