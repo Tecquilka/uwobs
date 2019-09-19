@@ -13,7 +13,7 @@ SELECT * FROM csv
 answer = select_one_from_csv(csv,query)
 print('# {}'.format(answer))
 # prints this:
-# {'index': 1, 'reference': 'hydrophone0', 'type': 'hydrophone', 'manufacturer': 'OceanSonics', 'id': 'SBF1622', 'ip_address': '172.16.255.254', 'start_date': '2019-09-13T10:00:00Z', 'end_date': None}
+# {'start_date': '2019-09-13T10:00:00Z', 'server': '172.16.255.254', 'reference': 'hydrophone0', 'manufacturer': 'OceanSonics', 'type': 'hydrophone', 'end_date': None, 'id': 'SBF1622'}
 #
 print ('''DEVICE={}
 SERVER={}'''.format(answer['id'],answer['server']));
