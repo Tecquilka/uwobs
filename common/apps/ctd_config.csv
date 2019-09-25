@@ -1,5 +1,5 @@
-reference,type,manufacturer,id,moxa_server,moxa_port,start_date,end_date
-ctd0,ctd,idronaut,I-OCEAN7-304-0616641,172.16.255.5,953,2017-08-01T00:00:00Z,2018-05-17T10:00:00Z
-ctd0,ctd,idronaut,I-OCEAN7-304-0616641,172.16.255.5,953,2018-11-26T00:00:00Z,2019-05-03T10:00:00Z
-ctd0,ctd,idronaut,I-OCEAN7-304-1214551,172.16.255.5,953,2018-08-07T00:00:00Z,2018-11-23TT19:00:00Z
-ctd0,ctd,idronaut,I-OCEAN7-304-1214551,172.16.255.5,950,2019-05-03T10:00:00Z,
+reference,type,manufacturer,id,moxa_server,moxa_port,moxa_command_port,configure_on_startup,start_date,end_date
+ctd0,ctd,idronaut,I-OCEAN7-304-0616641,172.16.255.5,953,967,true,2017-08-01T00:00:00Z,2018-05-17T10:00:00Z
+ctd0,ctd,idronaut,I-OCEAN7-304-0616641,172.16.255.5,953,967,true,2018-11-26T00:00:00Z,2019-05-03T10:00:00Z
+ctd0,ctd,idronaut,I-OCEAN7-304-1214551,172.16.255.5,953,967,true,2018-08-07T00:00:00Z,2018-11-23TT19:00:00Z
+ctd0,ctd,idronaut,I-OCEAN7-304-1214551,172.16.255.5,950,964,true,2019-05-03T10:00:00Z,
