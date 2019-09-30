@@ -30,7 +30,7 @@ def reconfigure_ctd(server,port,command_port,commands):
                   try:
                      sys.stderr.write('>>> {1}\n'.format(b.decode()))
                   except:
-                     print('(decode)')
+                     print('(decode)', file=sys.stderr)
                      pass
               else:
                   sleep(0.5)
@@ -50,7 +50,7 @@ def reconfigure_ctd(server,port,command_port,commands):
   sys.stderr.write('sent break... waiting 5 seconds to continue\n')
   sleep(5)
 
-  s.write(tt.encode())
+  #s.write(tt.encode())
   sleep(0.5)
   for line in commands:
       chars = '{0}\r'.format(line)
