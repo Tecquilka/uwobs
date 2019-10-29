@@ -20,6 +20,9 @@ export $( https_proxy=http://172.16.255.226:3128 $CONFIG | grep -v '^#' | xargs)
 HTTP_PORT=8196
 COLLECT_WAV=$HOME/dev/uwobs/common/apps/catserial/collect_audio.py
 
+# call the reset command on the hydrophone
+curl --max-time 10 -s "http://${SERVER}/cgi-bin/Operation.cgi?data=%7B%22action%22%3A%22reset%22%2C%22newtime%22%3A$(date +%s)%7D"
+
 
 $COLLECT_WAV --server "$SERVER" --http-port $HTTP_PORT
 
