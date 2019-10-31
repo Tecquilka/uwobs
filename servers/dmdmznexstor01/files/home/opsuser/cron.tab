@@ -1,2 +1,3 @@
- * * * * * /home/opsuser/bin/rsync-video-photo.sh >> /home/opsuser/logs/rsync.log 2>&1 || exit 0
+ * * * * * /home/opsuser/bin/rsync-video-photo.sh >> /home/opsuser/logs/rsync-video.log 2>&1 || exit 0
  * * * * * /home/opsuser/bin/rsync-audio.sh >> /home/opsuser/logs/rsync-audio.log 2>&1 || exit 0
+ */10 * * * * /home/opsuser/bin/create_video_snapshots.sh >> /home/opsuser/logs/create_video_snapshots.log 2>&1 || exit 0

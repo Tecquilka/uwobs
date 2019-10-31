@@ -14,3 +14,5 @@
 /home/opsuser/bin/rsync-video-photo.sh
 /home/opsuser/cron.tab
 /etc/nginx/sites-available/default
+/home/opsuser/bin/create_video_snapshots.sh
+/home/opsuser/bin/generate_subtitles.py

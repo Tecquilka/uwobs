@@ -1,6 +1,5 @@
 127.0.0.1	localhost
 172.17.1.13	dmdmznexstor01
-172.17.1.125    dmdmznexstor02
 172.16.255.19   spidvid
 
 # The following lines are desirable for IPv6 capable hosts
