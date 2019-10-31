@@ -12,7 +12,12 @@ COMMAND_PORT=968
 echo killing any adcp processes >&2
 
 kill $(ps -ef | grep adcp | grep -v grep  | grep -v interrupt | awk '{print $2}') || echo no process killed >&2
-
+# with flock /tmp/adcp.lock
+(
+flock -w 10 9 || (echo "couldn't lock" && exit 1)
+if [ ! -f /tmp/adcp-paused ]; then
+  exit 0;
+fi
 python -c "
 from serial import rfc2217,serial_for_url,Serial
 from time import sleep
@@ -55,5 +60,6 @@ thread.join()
 s.close()
 control.close()
 "
+) 9>/tmp/adcp.lock
 
 echo done >&2

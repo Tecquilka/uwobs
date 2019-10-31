@@ -15,11 +15,10 @@ do
 done
 
 
+CONFIG=$(dirname $0)/configure_fluorometer.py
+export $($CONFIG | grep -v '^#' | xargs)
 TYPE=fluorometer
-DEVICE=WL-ECO-FLNTU-4476
-PORT=951
 DATA_DIR=$HOME/$TYPE
-SERVER=172.16.255.5
 ARCHIVER=$(dirname $0)/archive_file.sh
 HTTP_PORT=8083
 KAFKA_SERVER=localhost
@@ -30,7 +29,7 @@ CATSERIAL=$(dirname $0)/../catserial/catserial.py
 mkdir -p $DATA_DIR || exit 1
 mkdir -p $DATA_DIR/Data || exit 1
 
-$PYTHON $CATSERIAL --device "socket://$SERVER:$PORT" --source "$DEVICE" --http-port $HTTP_PORT \
+$PYTHON $CATSERIAL --device "socket://$SERVER:$PORT" --source "$DEVICE" --http-port $HTTP_PORT --appending "|$FLUOROMETER_CONFIG" \
                    | tee >( kafkacat -P -b "$KAFKA_SERVER" -t "$KAFKA_TOPIC" -p 0 ) \
                    | rotatelogs -p $ARCHIVER "$DATA_DIR/${DEVICE}_%Y%m%d_%H%M.txt" 60
 

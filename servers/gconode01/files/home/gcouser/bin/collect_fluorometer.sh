@@ -8,23 +8,24 @@
 # Script is executed by supervisor,
 # see /etc/supervisor/conf.d/ctd.conf
 ################################################################## 
-while [ $(cat /proc/uptime | awk '{print $1}' | sed 's/\..*$//') -lt 180 ]
+while [ $(cat /proc/uptime | awk '{print $1}' | sed 's/\..*$//') -lt 70 ]
 do 
-   echo waiting for 3 minutes of uptime... >&2 
+   echo waiting for 1 minute of uptime... >&2 
    sleep 10
 done
 
 
-CONFIG=$(dirname $0)/configure_ctd.py
-export $($CONFIG | grep -v '^#' | xargs)
-TYPE=ctd
+TYPE=fluorometer
+DEVICE=WL-ECO-FLNTU-3137
+PORT=951
 DATA_DIR=$HOME/$TYPE
+SERVER=172.16.255.5
 ARCHIVER=$(dirname $0)/archive_file.sh
-HTTP_PORT=8082
+HTTP_PORT=8083
 KAFKA_SERVER=localhost
-KAFKA_TOPIC=spiddal-ctd
-PYTHON=$HOME/virtualenv/serial2kafka/bin/python
-CATSERIAL=$(dirname $0)/../catserial/catserial.py
+KAFKA_TOPIC=spiddal-$TYPE
+PYTHON=/home/gcouser/virtualenv/serial2kafka/bin/python
+CATSERIAL=/home/gcouser/apps/catserial/catserial.py
 
 mkdir -p $DATA_DIR || exit 1
 mkdir -p $DATA_DIR/Data || exit 1

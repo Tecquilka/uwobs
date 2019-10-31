@@ -40,7 +40,7 @@
 					"type": "forecastIndicator",
 					"settings": {
 						"title": "NE Atlantic Model",
-						"url": "http://erddap2.marine.ie/erddap/griddap/IMI_NEATL.json?time[(CHECKDATET00:00:00Z):1:(CHECKDATET00:00:00Z)],latitude[(48.00625):1:(57.99375)],longitude[(-17.99375):1:(-1.00625)]",
+						"url": "http://erddap.marine.ie/erddap/griddap/IMI_NEATL.json?time[(CHECKDATET00:00:00Z):1:(CHECKDATET00:00:00Z)],latitude[(48.00625):1:(57.99375)],longitude[(-17.99375):1:(-1.00625)]",
 						"warn_days": "3",
 						"error_days": "3",
 						"hours": "12"
@@ -50,7 +50,7 @@
 					"type": "forecastIndicator",
 					"settings": {
 						"title": "Bantry ASIMUTH",
-						"url": "http://erddap2.marine.ie/erddap/griddap/BANTRY_PARTICLES.json?time[(CHECKDATET00:00:00Z):1:(CHECKDATET00:00:00Z)]",
+						"url": "http://erddap.marine.ie/erddap/griddap/BANTRY_PARTICLES.json?time[(CHECKDATET00:00:00Z):1:(CHECKDATET00:00:00Z)]",
 						"warn_days": "0",
 						"error_days": "0",
 						"hours": "12"

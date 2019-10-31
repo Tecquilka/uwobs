@@ -8,26 +8,26 @@
 # Script is executed by supervisor,
 # see /etc/supervisor/conf.d/ctd.conf
 ################################################################## 
-while [ $(cat /proc/uptime | awk '{print $1}' | sed 's/\..*$//') -lt 180 ]
+while [ $(cat /proc/uptime | awk '{print $1}' | sed 's/\..*$//') -lt 60 ]
 do 
-   echo waiting for 3 minutes of uptime... >&2 
+   echo waiting for 1 minutes of uptime... >&2 
    sleep 10
 done
 
-CONFIG=$(dirname $0)/configure_adcp.py
-export $($CONFIG | grep -v '^#' | xargs)
+SOURCE=TRDI-WHB600Hz-1323
+PORT=952
+SERVER=172.16.255.8
 HTTP_PORT=8085
-PYTHON=$HOME/virtualenv/serial2kafka/bin/python
-COLLECT_ADCP=$(dirname $0)/../catserial/collect_adcp.py
+PYTHON=/home/gcouser/virtualenv/serial2kafka/bin/python
+COLLECT_ADCP=/home/gcouser/apps/catserial/collect_adcp.py
 
 
-$PYTHON $COLLECT_ADCP --server "$SERVER" --port "$PORT" --source "$DEVICE" --http-port $HTTP_PORT
+$PYTHON $COLLECT_ADCP --server "$SERVER" --port "$PORT" --source "$SOURCE" --http-port $HTTP_PORT
 
 status=$?
-while [ $SECONDS -lt 26 ]; do
+while [ $SECONDS -lt 31 ]; do
     echo -n . >&2
     sleep 1
 done
-sleep 5
 echo "done" $(date) >&2
 exit $status
