@@ -1,2 +1,3 @@
 reference,type,manufacturer,id,moxa_server,moxa_port,chl_scale_factor,chl_dark_counts,ntu_scale_factor,ntu_dark_counts,start_date,end_date
 fluorometer0,fluorometer,seabird,WL-ECO-FLNTU-4476,172.16.255.5,951,0.0178,48,0.0529,41,2019-09-10T00:00:00Z,2020-08-28T12:00:00Z
+fluorometer0,fluorometer,seabird,WL-ECO-FLNTU-3137,172.16.255.5,951,0.0178,48,0.0529,41,2020-08-28T14:00:00Z,
